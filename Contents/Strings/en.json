@@ -1,0 +1,113 @@
+{   
+    "Title" : "SkyPlayer",
+    
+    "Preferences": "Preferences",
+
+    "Entertainment": "Entertainment",
+    "Lifestyle": "Lifestyle and Culture",
+    "Movies": "Movies",
+    "Sports": "Sports",
+    "News": "News",
+    "Documentaries": "Documentaries",
+    "Kids": "Kids",
+    
+    "Sky1Title": "Sky One",
+    "Sky1Subtitle": "Watch Sky1 online",
+    "Sky1Summary": "From nail-biting action and drama to BAFTA award-winning documentaries, Sky1 is the entertainment channel with something for everyone.",
+
+    "SkyLivingTitle": "Sky Living",
+    "SkyLivingSubtitle": "Watch Sky Living online",
+    "SkyLivingSummary": "Bursting with the glossiest UK and US productions, Sky Living is all about fun, optimism and guilty pleasures.",
+
+    "SkyAtlanticTitle": "Sky Atlantic",
+    "SkyAtlanticSubtitle": "Watch Sky Atlantic online",
+    "SkyAtlanticSummary": "The TV lover's TV channel. The best of drama and comedy from across the pond with must watch shows Boardwalk Empire, Treme, Entourage, Weeds and more.",
+
+    "GoldTitle": "Gold",
+    "GoldSubtitle": "Watch Gold online",
+    "GoldSummary": "The home of great comedy with classics guaranteed to get you laughing. With wall-to-wall classic comedy, GOLD features some of the country's best loved and enduring comic performers and series every s...",
+
+    "MTVTitle": "MTV",
+    "MTVSubtitle": "Watch MTV online",
+    "MTVSummary": "MTV gives thrill seekers a VIP pass to hot live performances and ground-breaking TV programmes.",
+
+    "SkyArts1Title": "Sky Arts 1",
+    "SkyArts1Subtitle": "Watch Sky Arts 1 online",
+    "SkyArts1Summary": "Sky Arts is crammed full of contemporary arts programming with a distinctive mix of live concerts, documentaries, films and literature.",
+
+    "SkyPremiereTitle": "Sky Premiere",
+    "SkyPremiereSubtitle": "Watch Sky Movies Premiere online",
+    "SkyPremiereSummary": "All the latest films are shown first on Sky Movies Premiere which has five new premieres every week, and is the first channel to show 90% of the year's biggest box office hits.",
+
+    "SkyMoviesShowcaseTitle": "Sky Movies Showcase",
+    "SkyMoviesShowcaseSubtitle": "Watch Sky Showcase online",
+    "SkyMoviesShowcaseSummary": "Sky Movies is the home for all its seasons, specials, box sets and film collections, and from star spotlights to definitive retrospectives.",
+
+    "SkyMoviesActionAdventureTitle": "Sky Movies Action & Adventure",
+    "SkyMoviesActionAdventureSubtitle": "Watch Sky Movies Action and Adventure online",
+    "SkyMoviesActionAdventureSummary": "A non-stop adrenaline rush of explosive entertainment, brimming with all the pulse-pounding thrills any movie fan could wish for.",
+
+    "SkyMoviesFamilyTitle": "Sky Movies Family",
+    "SkyMoviesFamilySubtitle": "Watch Sky Movies Family online",
+    "SkyMoviesFamilySummary": "Terrible tykes, animated antics, wild life, magic and adventure all under one bursting roof.",
+
+    "SkySports1Title": "Sky Sports 1",
+    "SkySports1Subtitle": "Watch Sky Sports 1 online",
+    "SkySports1Summary": "Live action from The Masters, the Barclays Premier League, Boxing and Super League.",
+
+    "SkySports2Title": "Sky Sports 2",
+    "SkySports2Subtitle": "Watch Sky Sports 2 online",
+    "SkySports2Summary": "Live action on Sky Sports 2 includes the UEFA Champions League, ATP World Tour Tennis and Super Rugby Union.",
+
+    "SkySports3Title": "Sky Sports 3",
+    "SkySports3Subtitle": "Watch Sky Sports 3 online",
+    "SkySports3Summary": "Sky Sports 3 brings you live golf from the European and PGA Tour.",
+
+    "SkySports4Title": "Sky Sports 4",
+    "SkySports4Subtitle": "Watch Sky Sports 4 online",
+    "SkySports4Summary": "Sky Sports 4 looks back at all the football talking points and headlines in 'Premier League Years'.",
+
+    "SkySportsNewsTitle": "Sky Sports News",
+    "SkySportsNewsSubtitle": "Watch Sky Sports News online",
+    "SkySportsNewsSummary": "Breaking news, talking points and analysis of the major sporting issues of the day. E-mail your views to u2us@skysports.com or text 84408 (texts costs 25p, plus standard SMS network charge)",
+
+    "EurosportTitle": "British Eurosport",
+    "EurosportSubtitle": "Watch British Eurosport online",
+    "EurosportSummary": "British Eurosport is the largest sports satellite network in Europe and as well as offering a variety of sports, it has also won plaudits for its critically acclaimed coverage of international events.",
+
+    "SkyNewsTitle": "Sky News",
+    "SkyNewsSubtitle": "Watch Sky News online",
+    "SkyNewsSummary": "First for breaking news, Sky News brings you the stories that matter from the UK and around the world.",
+
+    "NatGeoTitle": "National Geographic Channel",
+    "NatGeoSubtitle": "Watch National Geographic Channel online",
+    "NatGeoSummary": "National Geographic offers smart factual entertainment for its viewers from real life investigation to science and history to wildlife. Explore and expand your knowledge with Nat Geo.",
+
+    "NatGeoWildTitle": "Nat Geo Wild",
+    "NatGeoWildSubtitle": "Watch Nat Geo Wild online",
+    "NatGeoWildSummary": "Get up close and personal with some of natures most fierce predators. Nat Geo Wild offers you a magical natural history and wildlife experience.",
+
+    "CartoonNetworkTitle": "Cartoon Network",
+    "CartoonNetworkSubtitle": "Watch Cartoon Network online",
+    "CartoonNetworkSummary": "Cartoon Network is the home of action-packed cartoons, animated adventures and laugh-out-loud toon comedy!",
+
+    "BoomerangTitle": "Boomerang",
+    "BoomerangSubtitle": "Watch Boomerang online",
+    "BoomerangSummary": "Boomerang is packed full of fabulous cartoon favourites and friendly new shows, it's the channel the whole family will come back to again and again.",
+
+    "NickelodeonTitle": "Nickelodeon",
+    "NickelodeonSubtitle": "Watch Nickelodeon online",
+    "NickelodeonSummary": "Nickelodeon is a high-octane mix of imaginative comedy and drama for kids with shows they love.",
+
+    "NickelodeonJrTitle": "Nickelodeon Jr",
+    "NickelodeonJrSubtitle": "Watch NickJr online",
+    "NickelodeonJrSummary": "Nick Jr is where preschoolers are encouraged to 'play to learn' and where social and thinking skills are nurtured.",
+
+    "DisneyXDTitle": "Disney XD",
+    "DisneyXDSubtitle": "Watch Disney XD online",
+    "DisneyXDSummary": "Disney XD is a new children's TV channel offering fantastic programmes geared mainly towards young males. It used to be known as Jetix.",
+
+    "DisneyChannelTitle": "Disney Channel",
+    "DisneyChannelSubtitle": "Watch Disney Channel online",
+    "DisneyChannelSummary": "The Disney Channel offers the very best in children's entertainment, with great live action shows, animated series and original movies made especially for kids."
+}
