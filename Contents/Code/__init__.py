@@ -50,179 +50,177 @@ SKY_LIVING_IT = "2207"
 
 SKY_NEWS = "1404"
 
-ERROR = MessageContainer('Network Error','A Network error has occurred')
-
 ####################################################################################################
 
 channels = { 
     "106": { 
         'url': SKY_ONE, 
-        'title': Locale.LocalString('Sky1Title'), 
-        'subtitle': Locale.LocalString('Sky1Subtitle'), 
-        'summary': Locale.LocalString('Sky1Summary'),
+        'title': L('Sky1Title'), 
+        'subtitle': L('Sky1Subtitle'), 
+        'summary': L('Sky1Summary'),
         'thumb': "icon-sky1.png" },
     "107": {
         'url': SKY_LIVING, 
-        'title': Locale.LocalString('SkyLivingTitle'), 
-        'subtitle': Locale.LocalString('SkyLivingSubtitle'), 
-        'summary': Locale.LocalString('SkyLivingSummary'),
+        'title': L('SkyLivingTitle'), 
+        'subtitle': L('SkyLivingSubtitle'), 
+        'summary': L('SkyLivingSummary'),
         'thumb': "icon-skyliving.png" },
     "108": {
         'url': SKY_ATLANTIC, 
-        'title': Locale.LocalString('SkyAtlanticTitle'), 
-        'subtitle': Locale.LocalString('SkyAtlanticSubtitle'), 
-        'summary': Locale.LocalString('SkyAtlanticSummary'),
+        'title': L('SkyAtlanticTitle'), 
+        'subtitle': L('SkyAtlanticSubtitle'), 
+        'summary': L('SkyAtlanticSummary'),
         'thumb': "icon-skyatlantic.png" },
     "110": {
         'url': GOLD, 
-        'title': Locale.LocalString('GoldTitle'), 
-        'subtitle': Locale.LocalString('GoldSubtitle'), 
-        'summary': Locale.LocalString('GoldSummary'),
+        'title': L('GoldTitle'), 
+        'subtitle': L('GoldSubtitle'), 
+        'summary': L('GoldSummary'),
         'thumb': "icon-gold.png" },
     "126": {
         'url': MTV, 
-        'title': Locale.LocalString('MTVTitle'), 
-        'subtitle': Locale.LocalString('MTVSubtitle'), 
-        'summary': Locale.LocalString('MTVSummary'),
+        'title': L('MTVTitle'), 
+        'subtitle': L('MTVSubtitle'), 
+        'summary': L('MTVSummary'),
         'thumb': "icon-mtv.png" },
     "243": {
         'url': SKY_ARTS_ONE, 
-        'title': Locale.LocalString('SkyArts1Title'), 
-        'subtitle': Locale.LocalString('SkyArts1Subtitle'), 
-        'summary': Locale.LocalString('SkyArts1Summary'),
+        'title': L('SkyArts1Title'), 
+        'subtitle': L('SkyArts1Subtitle'), 
+        'summary': L('SkyArts1Summary'),
         'thumb': "icon-skyarts1.png" },
     "301": {
         'url': SKY_PREMIERE, 
-        'title': Locale.LocalString('SkyPremiereTitle'), 
-        'subtitle': Locale.LocalString('SkyPremiereSubtitle'), 
-        'summary': Locale.LocalString('SkyPremiereSummary'),
+        'title': L('SkyPremiereTitle'), 
+        'subtitle': L('SkyPremiereSubtitle'), 
+        'summary': L('SkyPremiereSummary'),
         'thumb': "icon-skypremiere.png" },
     "303": {
         'url': SKY_SHOWCASE, 
-        'title': Locale.LocalString('SkyMoviesShowcaseTitle'), 
-        'subtitle': Locale.LocalString('SkyMoviesShowcaseSubtitle'), 
-        'summary': Locale.LocalString('SkyMoviesShowcaseSummary'),
+        'title': L('SkyMoviesShowcaseTitle'), 
+        'subtitle': L('SkyMoviesShowcaseSubtitle'), 
+        'summary': L('SkyMoviesShowcaseSummary'),
         'thumb': "icon-skymoviesshowcase.png" },
     "305": {
         'url': SKY_ACTION, 
-        'title': Locale.LocalString('SkyMoviesActionAdventureTitle'), 
-        'subtitle': Locale.LocalString('SkyMoviesActionAdventureSubtitle'), 
-        'summary': Locale.LocalString('SkyMoviesActionAdventureSummary'),
+        'title': L('SkyMoviesActionAdventureTitle'), 
+        'subtitle': L('SkyMoviesActionAdventureSubtitle'), 
+        'summary': L('SkyMoviesActionAdventureSummary'),
         'thumb': "icon-skymoviesactionadventure.png" },
     "306": {
         'url': SKY_FAMILY, 
-        'title': Locale.LocalString('SkyMoviesFamilyTitle'), 
-        'subtitle': Locale.LocalString('SkyMoviesFamilySubtitle'), 
-        'summary': Locale.LocalString('SkyMoviesFamilySummary'),
+        'title': L('SkyMoviesFamilyTitle'), 
+        'subtitle': L('SkyMoviesFamilySubtitle'), 
+        'summary': L('SkyMoviesFamilySummary'),
         'thumb': "icon-skymoviesfamily.png" },
     "401": {
         'url': SKY_SPORTS_ONE, 
-        'title': Locale.LocalString('SkySports1Title'), 
-        'subtitle': Locale.LocalString('SkySports1Subtitle'), 
-        'summary': Locale.LocalString('SkySports1Summary'),
+        'title': L('SkySports1Title'), 
+        'subtitle': L('SkySports1Subtitle'), 
+        'summary': L('SkySports1Summary'),
         'thumb': "icon-skysports1.png" },
     "402": {
         'url': SKY_SPORTS_TWO, 
-        'title': Locale.LocalString('SkySports2Title'), 
-        'subtitle': Locale.LocalString('SkySports2Subtitle'), 
-        'summary': Locale.LocalString('SkySports2Summary'),
-        'thumb': "icon-skysports2.gif" },
+        'title': L('SkySports2Title'), 
+        'subtitle': L('SkySports2Subtitle'), 
+        'summary': L('SkySports2Summary'),
+        'thumb': "icon-skysports2.png" },
     "403": {
         'url': SKY_SPORTS_THREE, 
-        'title': Locale.LocalString('SkySports3Title'), 
-        'subtitle': Locale.LocalString('SkySports3Subtitle'), 
-        'summary': Locale.LocalString('SkySports3Summary'),
-        'thumb': "icon-skysports3.gif" },
+        'title': L('SkySports3Title'), 
+        'subtitle': L('SkySports3Subtitle'), 
+        'summary': L('SkySports3Summary'),
+        'thumb': "icon-skysports3.png" },
     "404": {
         'url': SKY_SPORTS_FOUR, 
-        'title': Locale.LocalString('SkySports4Title'), 
-        'subtitle': Locale.LocalString('SkySports4Subtitle'), 
-        'summary': Locale.LocalString('SkySports4Summary'),
-        'thumb': "icon-skysports4.gif" },
+        'title': L('SkySports4Title'), 
+        'subtitle': L('SkySports4Subtitle'), 
+        'summary': L('SkySports4Summary'),
+        'thumb': "icon-skysports4.png" },
     "405": {
         'url': SKY_SPORTS_NEWS, 
-        'title': Locale.LocalString('SkySportsNewsTitle'), 
-        'subtitle': Locale.LocalString('SkySportsNewsSubtitle'), 
-        'summary': Locale.LocalString('SkySportsNewsSummary'),
+        'title': L('SkySportsNewsTitle'), 
+        'subtitle': L('SkySportsNewsSubtitle'), 
+        'summary': L('SkySportsNewsSummary'),
         'thumb': "icon-skysportsnews.png" },
     "405": {
         'url': EURO_SPORT, 
-        'title': Locale.LocalString('EurosportTitle'), 
-        'subtitle': Locale.LocalString('EurosportSubtitle'), 
-        'summary': Locale.LocalString('EurosportSummary'),
+        'title': L('EurosportTitle'), 
+        'subtitle': L('EurosportSubtitle'), 
+        'summary': L('EurosportSummary'),
         'thumb': "icon-eurosport.png" },
     "501": {
         'url': SKY_NEWS, 
-        'title': Locale.LocalString('SkyNewsTitle'), 
-        'subtitle': Locale.LocalString('SkyNewsSubtitle'), 
-        'summary': Locale.LocalString('SkyNewsSummary'),
+        'title': L('SkyNewsTitle'), 
+        'subtitle': L('SkyNewsSubtitle'), 
+        'summary': L('SkyNewsSummary'),
         'thumb': "icon-skynews.png" },
     "526": {
         'url': NAT_GEO, 
-        'title': Locale.LocalString('NatGeoTitle'), 
-        'subtitle': Locale.LocalString('NatGeoSubtitle'), 
-        'summary': Locale.LocalString('NatGeoSummary'),
+        'title': L('NatGeoTitle'), 
+        'subtitle': L('NatGeoSubtitle'), 
+        'summary': L('NatGeoSummary'),
         'thumb': "icon-natgeo.png" },
     "528": {
         'url': NAT_GEO_WILD, 
-        'title': Locale.LocalString('NatGeoWildTitle'), 
-        'subtitle': Locale.LocalString('NatGeoWildSubtitle'), 
-        'summary': Locale.LocalString('NatGeoWildSummary'),
+        'title': L('NatGeoWildTitle'), 
+        'subtitle': L('NatGeoWildSubtitle'), 
+        'summary': L('NatGeoWildSummary'),
         'thumb': "icon-natgeowild.png" },
     "601": {
         'url': CARTOON_NETWORK, 
-        'title': Locale.LocalString('CartoonNetworkTitle'), 
-        'subtitle': Locale.LocalString('CartoonNetworkSubtitle'), 
-        'summary': Locale.LocalString('CartoonNetworkSummary'),
+        'title': L('CartoonNetworkTitle'), 
+        'subtitle': L('CartoonNetworkSubtitle'), 
+        'summary': L('CartoonNetworkSummary'),
         'thumb': "icon-cartoonnetwork.png" },
     "603": {
         'url': BOOMERANG, 
-        'title': Locale.LocalString('BoomerangTitle'), 
-        'subtitle': Locale.LocalString('BoomerangSubtitle'), 
-        'summary': Locale.LocalString('BoomerangSummary'),
+        'title': L('BoomerangTitle'), 
+        'subtitle': L('BoomerangSubtitle'), 
+        'summary': L('BoomerangSummary'),
         'thumb': "icon-boomerang.png" },
     "604": {
         'url': NICKELODEON, 
-        'title': Locale.LocalString('NickelodeonTitle'), 
-        'subtitle': Locale.LocalString('NickelodeonSubtitle'), 
-        'summary': Locale.LocalString('NickelodeonSummary'),
+        'title': L('NickelodeonTitle'), 
+        'subtitle': L('NickelodeonSubtitle'), 
+        'summary': L('NickelodeonSummary'),
         'thumb': "icon-nickelodeon.png" },
     "607": {
         'url': DISNEY_XD, 
-        'title': Locale.LocalString('DisneyXDTitle'), 
-        'subtitle': Locale.LocalString('DisneyXDSubtitle'), 
-        'summary': Locale.LocalString('DisneyXDSummary'),
+        'title': L('DisneyXDTitle'), 
+        'subtitle': L('DisneyXDSubtitle'), 
+        'summary': L('DisneyXDSummary'),
         'thumb': "icon-disneyxd.png" },
     "609": {
         'url': DISNEY_CHANNEL, 
-        'title': Locale.LocalString('DisneyChannelTitle'), 
-        'subtitle': Locale.LocalString('DisneyChannelSubtitle'), 
-        'summary': Locale.LocalString('DisneyChannelSummary'),
+        'title': L('DisneyChannelTitle'), 
+        'subtitle': L('DisneyChannelSubtitle'), 
+        'summary': L('DisneyChannelSummary'),
         'thumb': "icon-disneychannel.png" },
     "615": {
         'url': NICKELODEON_JR, 
-        'title': Locale.LocalString('NickelodeonJrTitle'), 
-        'subtitle': Locale.LocalString('NickelodeonJrSubtitle'), 
-        'summary': Locale.LocalString('NickelodeonJrSummary'),
+        'title': L('NickelodeonJrTitle'), 
+        'subtitle': L('NickelodeonJrSubtitle'), 
+        'summary': L('NickelodeonJrSummary'),
         'thumb': "icon-nickjr.png" }}
 
 group_names = [ 
-    str(Locale.LocalString('Entertainment')), 
-    str(Locale.LocalString('Lifestyle')), 
-    str(Locale.LocalString('Movies')), 
-    str(Locale.LocalString('Sports')), 
-    str(Locale.LocalString('News')), 
-    str(Locale.LocalString('Documentaries')), 
-    str(Locale.LocalString('Kids'))]
+    str(L('Entertainment')), 
+    str(L('Lifestyle')), 
+    str(L('Movies')), 
+    str(L('Sports')), 
+    str(L('News')), 
+    str(L('Documentaries')), 
+    str(L('Kids'))]
 
 groups = {
-    str(Locale.LocalString('Entertainment')): [ "106", "107", "108", "110", "126" ],
-    str(Locale.LocalString('Lifestyle')): [ "243" ],
-    str(Locale.LocalString('Movies')): [ "301", "303", "305", "306" ],
-    str(Locale.LocalString('Sports')): [ "401", "402", "403", "404", "405" ],
-    str(Locale.LocalString('News')): [ "501" ],
-    str(Locale.LocalString('Documentaries')): [ "526", "528" ],
-    str(Locale.LocalString('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
+    str(L('Entertainment')): [ "106", "107", "108", "110", "126" ],
+    str(L('Lifestyle')): [ "243" ],
+    str(L('Movies')): [ "301", "303", "305", "306" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405" ],
+    str(L('News')): [ "501" ],
+    str(L('Documentaries')): [ "526", "528" ],
+    str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
 
 ####################################################################################################
 
@@ -231,19 +229,20 @@ groups = {
 def Start():
 
     # Initialize the plugin
-    Plugin.AddPrefixHandler(VIDEO_PREFIX, MainMenu, Locale.LocalString('Title'), ICON, ART)
-    Plugin.AddViewGroup("Basic", viewMode = "InfoList", mediaType = "items")
-    Plugin.AddViewGroup("Basic", viewMode = "List", mediaType = "items")
+    Plugin.AddPrefixHandler(VIDEO_PREFIX, MainMenu, NAME, ICON, ART)
+    Plugin.AddViewGroup("List", viewMode = "List", mediaType = "items")
+    Plugin.AddViewGroup("InfoList", viewMode = "InfoList", mediaType = "items")
 
     # Setup the artwork associated with the plugin
     MediaContainer.art = R(ART)
     MediaContainer.title1 = NAME
+    MediaContainer.viewGroup = "InfoList"
     DirectoryItem.thumb = R(ICON)
 
 # This main function will setup the displayed items. This will depend if the user is currently 
 # logged in.
 def MainMenu():
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
+    dir = MediaContainer(viewMode="List")
     
     # List all the different group names
     for group_name in group_names:
@@ -261,7 +260,7 @@ def MainMenu():
 
 # This function will display a specific group.
 def GroupMenu(sender, group_name = ''):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = group_name)
+    dir = MediaContainer(title2 = group_name)
 
     # Create a new item for every channel
     for channel_number in groups[group_name]:
