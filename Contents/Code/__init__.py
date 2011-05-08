@@ -310,8 +310,6 @@ def GroupMenu(sender, group_name = ''):
         
         channel = channels[channel_number]
         
-        tmp = NowAndNext(channel['url'])
-        
         dir.Append(WebVideoItem(
             GenerateFullUrl(channel['url']),
             title = channel['title'],
@@ -342,6 +340,7 @@ def GenerateFullUrl(channelUrl):
 
 ####################################################################################################
 
+# This function displays the first OnDemand menu. It contains a list of all the available channels.
 def OnDemandMainMenu(sender):
     dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
 
@@ -355,6 +354,7 @@ def OnDemandMainMenu(sender):
     
     return dir
 
+# This function displays the available genres which can be played on demand.
 def OnDemandChannelMenu(sender, channel_name = ""):
     dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
 
@@ -369,6 +369,8 @@ def OnDemandChannelMenu(sender, channel_name = ""):
 
     return dir
 
+# This function displays the titles available for the selected genre. If the found URL contains
+# a reference to a series identifier, it will present the option to select an individual episode.
 def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
     dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
 
@@ -399,7 +401,8 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
                 thumb = title_detail['image']))
 
     return dir
-               
+             
+# This function displays the known episode for the selected series.
 def OnDemandSeriesMenu(sender, series_url):                       
     dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))   
     
@@ -412,8 +415,6 @@ def OnDemandSeriesMenu(sender, series_url):
             summary = title_detail['summary'],
             infoLabel = title_detail['label'],
             thumb = title_detail['image']))
-    
-        Log(title_detail['url'])
     
     return dir
 
