@@ -157,9 +157,9 @@ channels = {
         'thumb': "icon-eurosport.png" },
     "417": {
         'url': ESPN,
-        'title': Locale.LocalString('ESPNTitle'), 
-        'subtitle': Locale.LocalString('ESPNSubtitle'), 
-        'summary': Locale.LocalString('ESPNSummary'),
+        'title': L('ESPNTitle'), 
+        'subtitle': L('ESPNSubtitle'), 
+        'summary': L('ESPNSummary'),
         'thumb': "icon-espn.png" },
     "501": {
         'url': SKY_NEWS, 
@@ -226,34 +226,34 @@ group_names = [
     str(L('Kids'))]
 
 groups = {
-    str(Locale.LocalString('Entertainment')): [ "106", "107", "108", "110", "126" ],
-    str(Locale.LocalString('Lifestyle')): [ "243" ],
-    str(Locale.LocalString('Movies')): [ "301", "303", "305", "306" ],
-    str(Locale.LocalString('Sports')): [ "401", "402", "403", "404", "405", "417" ],
-    str(Locale.LocalString('News')): [ "501" ],
-    str(Locale.LocalString('Documentaries')): [ "526", "528" ],
-    str(Locale.LocalString('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
+    str(L('Entertainment')): [ "106", "107", "108", "110", "126" ],
+    str(L('Lifestyle')): [ "243" ],
+    str(L('Movies')): [ "301", "303", "305", "306" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "417" ],
+    str(L('News')): [ "501" ],
+    str(L('Documentaries')): [ "526", "528" ],
+    str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
 
 on_demand_channels = {
-    str(Locale.LocalString('Entertainment')): {
+    str(L('Entertainment')): {
         'name': "SKYENTERTAINMENT",
         'categories': [ "Drama", "Action", "Sci Fi", "Comedy", "Reality", "Game Shows" ]},
-    str(Locale.LocalString('Lifestyle')): {
+    str(L('Lifestyle')): {
         'name': "SKYCULTURE",
         'categories': [ "Arts and Culture", "Film and Literature", "Homes", "Music", "Performance" ]},
-    str(Locale.LocalString('Movies')): {
+    str(L('Movies')): {
         'name': "SKYMOVIES",
         'categories': [ "Showcase", "Comedy", "Action", "Family", "Crime and Thriller", "Sci-Fi", "Drama", "Horror", "Modern Greats", "Classics", "Indie"]},
-    str(Locale.LocalString('Sports')): {
+    str(L('Sports')): {
         'name': "SKYSPORTS",
         'categories': [ "Football", "Rugby Union", "Cricket", "Golf", "Boxing", "Motorsports", "Darts", "Features", "Tennis"]},
-    str(Locale.LocalString('News')): {
+    str(L('News')): {
         'name': "SKYNEWS",
         'categories': [ "Current Affairs", "Factual"]},
-    str(Locale.LocalString('Documentaries')): {
+    str(L('Documentaries')): {
         'name': "SKYDOCUMENTARIES",
         'categories': [ "Crime", "Engineering", "History", "Science and Nature", "Society and Civilisation"]},
-    str(Locale.LocalString('Kids')): {
+    str(L('Kids')): {
         'name': "SKYKIDS",
         'categories': [ "Activities", "Animation", "Adventure", "Entertainment and Comedy", "Educational", "Music", "Teen"]}
 }
@@ -294,7 +294,7 @@ def MainMenu():
 
 # This function will display the available live channels
 def LiveMenu(sender):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
+    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
 
     # List all the different group names
     for group_name in group_names:
@@ -387,7 +387,7 @@ def GenerateFullUrl(channelUrl):
 
 # This function displays the first OnDemand menu. It contains a list of all the available channels.
 def OnDemandMainMenu(sender):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
+    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
 
     # List all the different group names
     for group_name in group_names:
@@ -401,7 +401,7 @@ def OnDemandMainMenu(sender):
 
 # This function displays the available genres which can be played on demand.
 def OnDemandChannelMenu(sender, channel_name = ""):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
+    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
 
     channel_details = on_demand_channels[channel_name]
     for category in channel_details['categories']:
@@ -417,7 +417,7 @@ def OnDemandChannelMenu(sender, channel_name = ""):
 # This function displays the titles available for the selected genre. If the found URL contains
 # a reference to a series identifier, it will present the option to select an individual episode.
 def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))
+    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
 
     on_demand_channels[channel_name]['name']
     for title_detail in TitleDetails(ON_DEMAND_URL % (on_demand_channels[channel_name]['name'], category_name.replace(' ', '_'))):
@@ -449,7 +449,7 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
              
 # This function displays the known episode for the selected series.
 def OnDemandSeriesMenu(sender, series_url):                       
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = Locale.LocalString('Title'))   
+    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))   
     
     for title_detail in TitleDetails(series_url):
         
