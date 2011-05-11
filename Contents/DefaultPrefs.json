@@ -17,6 +17,6 @@
         "type": "enum",
         "label": "Quality",
         "values": ["Auto", "Low", "Medium", "High"],
-        "default": "Auto",
+        "default": "Auto"
     }
 ]
