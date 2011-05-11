@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site site="http://skyplayer.sky.com/vod/page"
+<site site="http://skyplayer.sky.com/vod/content"
     plugin="silverlight"
     identifier="com.plexapp.plugins.skyplayer"
     initialState="wait-for-frame-load"
     manualLock="true"
     version="1.0">
-
-    <!-- Crop the control to better fill the application -->
-    <crop x="0" y="100" width="0" height="568" />
 
     <!-- The condition we use several times from within states to check if we're logged in or not -->
     <condition name="need-to-login">
@@ -113,14 +110,39 @@
                 <!-- The live tv pages contain multiple silverlight controls which means that Plex -->
                 <!-- can easily select the wrong one. Therefore, we simplify the selection by removing -->
                 <!-- everything else from the page before progressing to the 'playing' state. -->
-                <run script="document.body=silverlightControl" />
+                <run script="iframes = document.getElementsByTagName('iframe'); for (i=0; i&lt;iframes.length; i++){iframes[i].src='';}" />
                 <pause time="1000" />
                 <lockPlugin />
-                <goto state="playing" />
+                <goto state="silverlight-loading" />
+            </action>
+        </event>
+        <event>
+            <condition>
+                <!-- Check to see if the 'Play' button is visible. If this is false, then it's likely -->
+                <!-- that the user does not have permission to play this content. -->
+                <javascript script="$('#play_primary_meta_id_anchor').is(':visible')" matches="1" />
+            </condition>
+            <action>
+                <goto state="end" param="This title is not available on this machine for your Sky subscription" />
             </action>
         </event>
     </state>
 
+    <!-- Wait for silverlight control to fully load -->
+    <state name="silverlight-loading">
+        <event>
+            <condition>
+                <javascript script="silverlightControl.IsLoaded ? 1 : 0" matches="1" />
+            </condition>
+            <action>
+                <!-- Click the play button located on the player -->
+                <pause time="500" />
+                <click x="275" y="125" skipMouseUp="true" />
+                <goto state="playing" />
+            </action>
+        </event>
+    </state>
+    
     <!-- Playing -->
     <state name="playing">
         <event>
