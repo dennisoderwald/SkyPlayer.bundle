@@ -310,11 +310,25 @@ def GroupMenu(sender, group_name = ''):
         
         channel = channels[channel_number]
         
+        # Attempt to determine the title and description of the show playing now and next. If
+        # nothing is returned, then we should just assume failure and simply use the channel's
+        # own information.
+        now_and_next = NowAndNext(channel['url'])
+        description = channel['summary']
+        if now_and_next != "":
+            description = "%s\n\nNow: %s\n%s\n\nNext: %s\n%s"
+            description = description % (
+                channel['summary'], 
+                now_and_next['Now']['Title'], 
+                now_and_next['Now']['Description'], 
+                now_and_next['Next']['Title'], 
+                now_and_next['Next']['Description'])
+        
         dir.Append(WebVideoItem(
             GenerateFullUrl(channel['url']),
             title = channel['title'],
             subtitle = channel['subtitle'],
-            summary = channel['summary'],
+            summary = description,
             infoLabel = channel_number,
             thumb = R(channel['thumb'])))
     
@@ -324,7 +338,32 @@ def GroupMenu(sender, group_name = ''):
 # channel. This information includes the name of the show, along with a brief description.
 def NowAndNext(channel_url):
     epg = JSON.ObjectFromURL(EPG_URL % dict(time = dt.now().strftime('%Y%m%d%H%M'), channels = channel_url))
-    return ""
+    
+    # Check to see if we have been given any channel.
+    if epg.has_key('channels') == False:
+        return ""
+    
+    channel_collection = epg['channels']
+
+    # Check to see if we have been given any programs.
+    if channel_collection.has_key('program') == False:
+        return ""
+
+    programs = channel_collection['program']
+
+    # Ensure that we have at least two programs in order to display now and next.
+    if len(programs) < 2:
+        return ""
+
+    # Determine the details of the titles which are "Now and Next"
+    now_title = programs[0]['title']
+    now_desc = programs[0]['shortDesc']
+
+    next_title = programs[1]['title']
+    next_desc = programs[1]['shortDesc']
+    
+    
+    return { "Now" : { "Title": now_title, "Description": now_desc }, "Next" : { "Title": next_title, "Description": next_desc } }
 
 # This function will generate a suitable URL for the required channel, using the appropriate quality
 # setting currently selected by the user in their preferences.
