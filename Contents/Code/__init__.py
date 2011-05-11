@@ -38,6 +38,7 @@ SKY_SPORTS_THREE = "1333"
 SKY_SPORTS_FOUR = "1322"
 SKY_SPORTS_NEWS = "1314"
 EURO_SPORT = "1726"
+ESPN = "3141"
 
 # Children
 CARTOON_NETWORK = "5601"
@@ -156,6 +157,12 @@ channels = {
         'subtitle': Locale.LocalString('EurosportSubtitle'), 
         'summary': Locale.LocalString('EurosportSummary'),
         'thumb': "icon-eurosport.png" },
+    "417": {
+        'url': ESPN,
+        'title': Locale.LocalString('ESPNTitle'), 
+        'subtitle': Locale.LocalString('ESPNSubtitle'), 
+        'summary': Locale.LocalString('ESPNSummary'),
+        'thumb': "icon-espn.png" },
     "501": {
         'url': SKY_NEWS, 
         'title': Locale.LocalString('SkyNewsTitle'), 
@@ -224,7 +231,7 @@ groups = {
     str(Locale.LocalString('Entertainment')): [ "106", "107", "108", "110", "126" ],
     str(Locale.LocalString('Lifestyle')): [ "243" ],
     str(Locale.LocalString('Movies')): [ "301", "303", "305", "306" ],
-    str(Locale.LocalString('Sports')): [ "401", "402", "403", "404", "405" ],
+    str(Locale.LocalString('Sports')): [ "401", "402", "403", "404", "405", "417" ],
     str(Locale.LocalString('News')): [ "501" ],
     str(Locale.LocalString('Documentaries')): [ "526", "528" ],
     str(Locale.LocalString('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
