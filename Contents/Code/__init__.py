@@ -476,8 +476,12 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
         
         url = title_detail['url']
         
+        # We should only display content which actually comes from the skyplayer website. It's 
+        # possible that some titles might actually be linked to the BBC
+        if url.startswith("http://skyplayer.sky.com/vod") == False:
+            continue
+        
         # If the associated URL is pointing to a series, then we need to transition into a sub-menu
-        #
         if url.find('/seriesId/') != -1:
             dir.Append(Function(
                 DirectoryItem(
@@ -505,13 +509,24 @@ def OnDemandSeriesMenu(sender, series_url):
     
     for title_detail in TitleDetails(series_url):
         
+        url = title_detail['url']
+        
+        # We should only display content which actually comes from the skyplayer website. It's 
+        # possible that some titles might actually be linked to the BBC
+        if url.startswith("http://skyplayer.sky.com/vod") == False:
+            continue
+        
         dir.Append(WebVideoItem(
-            title_detail['url'],
+            url,
             title = title_detail['title'],
             subtitle = title_detail['subtitle'],
             summary = title_detail['summary'],
             infoLabel = title_detail['label'],
             thumb = title_detail['image']))
+    
+    # If there are no titles, we should warn the user.
+    if len(dir) == 0:
+        return MessageContainer(sender.itemTitle, L('ErrorNoTitles'))
     
     return dir
 
@@ -532,7 +547,11 @@ def TitleDetails(url):
         image_style_split = image_style.split("'")
         if len(image_style_split) == 3:
             image = image_style_split[1]
-        url = "http://skyplayer.sky.com" + slot.xpath(".//a[contains(concat(' ',normalize-space(@class),' '),' slideButton ')]")[0].get('href')
+        
+        # If the specified URL is relative, then translate it
+        url = slot.xpath(".//a[contains(concat(' ',normalize-space(@class),' '),' slideButton ')]")[0].get('href')
+        if url.startswith("http") == False:
+            url = "http://skyplayer.sky.com" + url
     
         titles.append({
             'title': title, 
@@ -550,7 +569,11 @@ def TitleDetails(url):
         title = component.xpath(".//h3/a/text()")[0].lstrip().rstrip()
         description = component.xpath(".//p/text()")[0]
         image = component.xpath(".//img")[0].get('src')
-        url = "http://skyplayer.sky.com" + component.xpath(".//a")[0].get('href')
+        
+        # If the specified URL is relative, then translate it
+        url = component.xpath(".//a")[0].get('href')
+        if url.startswith("http") == False:
+            url = "http://skyplayer.sky.com" + url
     
         titles.append({
             'title': title, 
@@ -567,7 +590,12 @@ def TitleDetails(url):
         
         title = item.xpath(".//h3")[0].get('title')
         image = "http://skyplayer.sky.com" + String.Quote(item.xpath(".//img")[0].get('src'))
-        url = "http://skyplayer.sky.com" + item.xpath(".//a")[0].get('href')
+        
+        # If the specified URL is relative, then translate it
+        url = item.xpath(".//a")[0].get('href')
+        if url.startswith("http") == False:
+            url = "http://skyplayer.sky.com" + url
+        
         channel = ""
         try:
             channel = item.xpath(".//span[@class='broadcastChannel']/text()")[0]

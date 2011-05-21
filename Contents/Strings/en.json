@@ -141,5 +141,7 @@
 
     "DisneyChannelTitle": "Disney Channel",
     "DisneyChannelSubtitle": "Watch Disney Channel online",
-    "DisneyChannelSummary": "The Disney Channel offers the very best in children's entertainment, with great live action shows, animated series and original movies made especially for kids."
+    "DisneyChannelSummary": "The Disney Channel offers the very best in children's entertainment, with great live action shows, animated series and original movies made especially for kids.",
+
+     "ErrorNoTitles": "There are no titles available for the selected item"
 }
