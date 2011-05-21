@@ -12,7 +12,7 @@ ICON = 'icon-default.png'
 
 LOGIN_URL = 'https://skyplayer.sky.com/vod/content/Home/Application_Navigation/Sign_in/content/login.do'
 PLAYER_URL = 'http://skyplayer.sky.com/vod/page/playLiveTv.do?epgChannelId=%s'
-EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=240&time=%(time)s&channels=%(channels)s'
+EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
 ON_DEMAND_URL = 'http://skyplayer.sky.com/vod/content/%s/Browse_by_Genre/%s/content/default/promoPage.do'
 
 # Entertainment
