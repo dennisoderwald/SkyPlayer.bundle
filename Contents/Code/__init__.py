@@ -20,6 +20,7 @@ SKY_ONE = "1402"
 SKY_LIVING = "2201"
 SKY_ATLANTIC = "1412"
 GOLD = "2304"
+SKY_LIVING_IT = "2207"
 MTV = "2501"
 
 # Lifestyle
@@ -38,7 +39,10 @@ SKY_SPORTS_THREE = "1333"
 SKY_SPORTS_FOUR = "1322"
 SKY_SPORTS_NEWS = "1314"
 EURO_SPORT = "1726"
+EURO_SPORT_TWO = "1841"
 ESPN = "3141"
+ESPN_CLASSIC = "3221"
+SKY_SPORTS_XTRA = "499"
 
 # Children
 CARTOON_NETWORK = "5601"
@@ -51,9 +55,11 @@ DISNEY_CHANNEL = "1881"
 # Documentaries
 NAT_GEO = "1806"
 NAT_GEO_WILD = "1847"
+HISTORY = "1875"
+EDEN = "2302"
+CRIME_AND_INVESTIGATION = "1448"
 
-SKY_LIVING_IT = "2207"
-
+# News
 SKY_NEWS = "1404"
 
 ####################################################################################################
@@ -83,6 +89,12 @@ channels = {
         'subtitle': L('GoldSubtitle'), 
         'summary': L('GoldSummary'),
         'thumb': "icon-gold.png" },
+    "122": {
+        'url': SKY_LIVING_IT, 
+        'title': L('SkyLivingitTitle'), 
+        'subtitle': L('SkyLivingitSubtitle'), 
+        'summary': L('SkyLivingitSummary'),
+        'thumb': "icon-skylivingit.png" },
     "126": {
         'url': MTV, 
         'title': L('MTVTitle'), 
@@ -155,12 +167,30 @@ channels = {
         'subtitle': L('EurosportSubtitle'), 
         'summary': L('EurosportSummary'),
         'thumb': "icon-eurosport.png" },
+    "411": {
+        'url': EURO_SPORT_TWO, 
+        'title': L('Eurosport2Title'), 
+        'subtitle': L('Eurosport2Subtitle'), 
+        'summary': L('Eurosport2Summary'),
+        'thumb': "icon-eurosport2.png" },
     "417": {
         'url': ESPN,
         'title': L('ESPNTitle'), 
         'subtitle': L('ESPNSubtitle'), 
         'summary': L('ESPNSummary'),
         'thumb': "icon-espn.png" },
+    "442": {
+        'url': ESPN_CLASSIC,
+        'title': L('ESPNClassicTitle'), 
+        'subtitle': L('ESPNClassicSubtitle'), 
+        'summary': L('ESPNClassicSummary'),
+        'thumb': "icon-espnclassic.png" },
+    "499": {
+        'url': SKY_SPORTS_XTRA, 
+        'title': L('SkySportsXtraTitle'), 
+        'subtitle': L('SkySportsXtraSubtitle'), 
+        'summary': L('SkySportsXtraSummary'),
+        'thumb': "icon-skysportsxtra.png" },
     "501": {
         'url': SKY_NEWS, 
         'title': L('SkyNewsTitle'), 
@@ -179,6 +209,24 @@ channels = {
         'subtitle': L('NatGeoWildSubtitle'), 
         'summary': L('NatGeoWildSummary'),
         'thumb': "icon-natgeowild.png" },
+    "529": {
+        'url': HISTORY, 
+        'title': L('HistoryTitle'), 
+        'subtitle': L('HistorySubtitle'), 
+        'summary': L('HistorySummary'),
+        'thumb': "icon-history.png" },
+    "532": {
+        'url': EDEN, 
+        'title': L('EdenTitle'), 
+        'subtitle': L('EdenSubtitle'), 
+        'summary': L('EdenSummary'),
+        'thumb': "icon-eden.png" },
+    "553": {
+        'url': CRIME_AND_INVESTIGATION, 
+        'title': L('CrimeInvestigationTitle'), 
+        'subtitle': L('CrimeInvestigationSubtitle'), 
+        'summary': L('CrimeInvestigationSummary'),
+        'thumb': "icon-crimeinvestigation.png" },
     "601": {
         'url': CARTOON_NETWORK, 
         'title': L('CartoonNetworkTitle'), 
@@ -226,12 +274,12 @@ group_names = [
     str(L('Kids'))]
 
 groups = {
-    str(L('Entertainment')): [ "106", "107", "108", "110", "126" ],
+    str(L('Entertainment')): [ "106", "107", "108", "110", "122", "126" ],
     str(L('Lifestyle')): [ "243" ],
     str(L('Movies')): [ "301", "303", "305", "306" ],
-    str(L('Sports')): [ "401", "402", "403", "404", "405", "417" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "411", "417", "442", "499" ],
     str(L('News')): [ "501" ],
-    str(L('Documentaries')): [ "526", "528" ],
+    str(L('Documentaries')): [ "526", "528", "529", "532", "553" ],
     str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
 
 on_demand_channels = {
@@ -344,6 +392,10 @@ def GroupMenu(sender, group_name = ''):
 # channel. This information includes the name of the show, along with a brief description.
 def NowAndNext(channel_url):
     epg = JSON.ObjectFromURL(EPG_URL % dict(time = dt.now().strftime('%Y%m%d%H%M'), channels = channel_url))
+    
+    # Check to see if we've received anything.
+    if epg == "":
+        return ""
     
     # Check to see if we have been given any channel.
     if epg.has_key('channels') == False:
