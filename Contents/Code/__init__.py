@@ -10,6 +10,7 @@ NAME = L('Title')
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
 
+BASE_URL = 'http://skyplayer.sky.com'
 LOGIN_URL = 'https://skyplayer.sky.com/vod/content/Home/Application_Navigation/Sign_in/content/login.do'
 PLAYER_URL = 'http://skyplayer.sky.com/vod/page/playLiveTv.do?epgChannelId=%s'
 EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
@@ -543,15 +544,20 @@ def TitleDetails(url):
         title = slot.xpath(".//h3/span/text()")[0]
         description = slot.xpath(".//div[@class='slotDetails']/div[@class='synopsis']/p/text()")[0]
 
+        image = ""
         image_style = slot.xpath(".//div[@class='slotBkg']")[0].get('style')
         image_style_split = image_style.split("'")
         if len(image_style_split) == 3:
             image = image_style_split[1]
+ 
+        # If the specified URL is relative, then translate it
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
         
         # If the specified URL is relative, then translate it
         url = slot.xpath(".//a[contains(concat(' ',normalize-space(@class),' '),' slideButton ')]")[0].get('href')
         if url.startswith("http") == False:
-            url = "http://skyplayer.sky.com" + url
+            url = BASE_URL + url
     
         titles.append({
             'title': title, 
@@ -568,12 +574,16 @@ def TitleDetails(url):
     for component in video_components:
         title = component.xpath(".//h3/a/text()")[0].lstrip().rstrip()
         description = component.xpath(".//p/text()")[0]
+ 
+        # If the specified URL is relative, then translate it
         image = component.xpath(".//img")[0].get('src')
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
         
         # If the specified URL is relative, then translate it
         url = component.xpath(".//a")[0].get('href')
         if url.startswith("http") == False:
-            url = "http://skyplayer.sky.com" + url
+            url = BASE_URL + url
     
         titles.append({
             'title': title, 
@@ -589,12 +599,16 @@ def TitleDetails(url):
     for item in items:
         
         title = item.xpath(".//h3")[0].get('title')
-        image = "http://skyplayer.sky.com" + String.Quote(item.xpath(".//img")[0].get('src'))
+
+        # If the specified URL is relative, then translate it
+        image = item.xpath(".//img")[0].get('src')
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
         
         # If the specified URL is relative, then translate it
         url = item.xpath(".//a")[0].get('href')
         if url.startswith("http") == False:
-            url = "http://skyplayer.sky.com" + url
+            url = BASE_URL + url
         
         channel = ""
         try:
