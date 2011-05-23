@@ -27,6 +27,10 @@
     "GoldSubtitle": "Watch Gold online",
     "GoldSummary": "The home of great comedy with classics guaranteed to get you laughing. With wall-to-wall classic comedy, GOLD features some of the country's best loved and enduring comic performers and series every s...",
 
+    "SkyLivingitTitle": "Sky Livingit",
+    "SkyLivingitSubtitle": "Watch Sky Livingit online",
+    "SkyLivingitSummary": "Sister channel to Sky Living, Sky Livingit features the best factual entertainment and revealing reality shows.",
+
     "MTVTitle": "MTV",
     "MTVSubtitle": "Watch MTV online",
     "MTVSummary": "MTV gives thrill seekers a VIP pass to hot live performances and ground-breaking TV programmes.",
@@ -75,9 +79,21 @@
     "EurosportSubtitle": "Watch British Eurosport online",
     "EurosportSummary": "British Eurosport is the largest sports satellite network in Europe and as well as offering a variety of sports, it has also won plaudits for its critically acclaimed coverage of international events.",
 
+    "Eurosport2Title": "British Eurosport 2",
+    "Eurosport2Subtitle": "Watch British Eurosport 2 online",
+    "Eurosport2Summary": "British Eurosport 2 is considered the new generation sports channel, dedicated to team sports, alternative sports and entertainment including Basketball, Surfing, Handball Champions League and Austr...",
+
     "ESPNTitle": "ESPN",
     "ESPNSubtitle": "Watch ESPN online",
     "ESPNSummary": "The ESPN Channel has live Barclays Premier League matches and live matches from other national and international sports associations and major leagues, with surrounding studio shows with news, top ana...",
+
+    "ESPNClassicTitle": "ESPN Classic",
+    "ESPNClassicSubtitle": "Watch ESPN Classic online",
+    "ESPNClassicSummary": "ESPN Classic brings to you the best in sporting documentaries, unseen footage, and classic matches from an ever-growing number of sports including football, boxing and cricket.",
+
+    "SkySportsXtraTitle": "Sky Sports Xtra",
+    "SkySportsXtraSubtitle": "Watch Sky Sports Xtra online",
+    "SkySportsXtraSummary": "Sky subscribers can see even more live action with online channel Sky Sports Xtra",
 
     "SkyNewsTitle": "Sky News",
     "SkyNewsSubtitle": "Watch Sky News online",
@@ -90,6 +106,18 @@
     "NatGeoWildTitle": "Nat Geo Wild",
     "NatGeoWildSubtitle": "Watch Nat Geo Wild online",
     "NatGeoWildSummary": "Get up close and personal with some of natures most fierce predators. Nat Geo Wild offers you a magical natural history and wildlife experience.",
+
+    "HistoryTitle": "History",
+    "HistorySubtitle": "Watch History online",
+    "HistorySummary": "History connects viewers with the past taking them on an educational journey through the ages, using modern filmmaking techniques, lucid reconstruction and enthralling narrative.",
+
+    "EdenTitle": "Eden",
+    "EdenSubtitle": "Watch Eden online",
+    "EdenSummary": "A fascinating look at the past, present and future of our planet, with authoritative guides and breathtaking animal and physical wonders, Eden promises a daily shot of jaw-dropping astonishment. One a...",
+
+    "CrimeInvestigationTitle": "Crime & Investigation",
+    "CrimeInvestigationSubtitle": "Watch Crime and Investigation Network online",
+    "CrimeInvestigationSummary": "Crime & Investigation delves into police archives, explores real crime labs and enters hollow courtrooms taking viewers on a journey to the criminal underworld.",
 
     "CartoonNetworkTitle": "Cartoon Network",
     "CartoonNetworkSubtitle": "Watch Cartoon Network online",
@@ -113,5 +141,7 @@
 
     "DisneyChannelTitle": "Disney Channel",
     "DisneyChannelSubtitle": "Watch Disney Channel online",
-    "DisneyChannelSummary": "The Disney Channel offers the very best in children's entertainment, with great live action shows, animated series and original movies made especially for kids."
+    "DisneyChannelSummary": "The Disney Channel offers the very best in children's entertainment, with great live action shows, animated series and original movies made especially for kids.",
+
+     "ErrorNoTitles": "There are no titles available for the selected item"
 }

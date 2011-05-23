@@ -10,9 +10,10 @@ NAME = L('Title')
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
 
+BASE_URL = 'http://skyplayer.sky.com'
 LOGIN_URL = 'https://skyplayer.sky.com/vod/content/Home/Application_Navigation/Sign_in/content/login.do'
 PLAYER_URL = 'http://skyplayer.sky.com/vod/page/playLiveTv.do?epgChannelId=%s'
-EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=240&time=%(time)s&channels=%(channels)s'
+EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
 ON_DEMAND_URL = 'http://skyplayer.sky.com/vod/content/%s/Browse_by_Genre/%s/content/default/promoPage.do'
 
 # Entertainment
@@ -20,6 +21,7 @@ SKY_ONE = "1402"
 SKY_LIVING = "2201"
 SKY_ATLANTIC = "1412"
 GOLD = "2304"
+SKY_LIVING_IT = "2207"
 MTV = "2501"
 
 # Lifestyle
@@ -38,7 +40,10 @@ SKY_SPORTS_THREE = "1333"
 SKY_SPORTS_FOUR = "1322"
 SKY_SPORTS_NEWS = "1314"
 EURO_SPORT = "1726"
+EURO_SPORT_TWO = "1841"
 ESPN = "3141"
+ESPN_CLASSIC = "3221"
+SKY_SPORTS_XTRA = "499"
 
 # Children
 CARTOON_NETWORK = "5601"
@@ -51,9 +56,11 @@ DISNEY_CHANNEL = "1881"
 # Documentaries
 NAT_GEO = "1806"
 NAT_GEO_WILD = "1847"
+HISTORY = "1875"
+EDEN = "2302"
+CRIME_AND_INVESTIGATION = "1448"
 
-SKY_LIVING_IT = "2207"
-
+# News
 SKY_NEWS = "1404"
 
 ####################################################################################################
@@ -83,6 +90,12 @@ channels = {
         'subtitle': L('GoldSubtitle'), 
         'summary': L('GoldSummary'),
         'thumb': "icon-gold.png" },
+    "122": {
+        'url': SKY_LIVING_IT, 
+        'title': L('SkyLivingitTitle'), 
+        'subtitle': L('SkyLivingitSubtitle'), 
+        'summary': L('SkyLivingitSummary'),
+        'thumb': "icon-skylivingit.png" },
     "126": {
         'url': MTV, 
         'title': L('MTVTitle'), 
@@ -155,12 +168,30 @@ channels = {
         'subtitle': L('EurosportSubtitle'), 
         'summary': L('EurosportSummary'),
         'thumb': "icon-eurosport.png" },
+    "411": {
+        'url': EURO_SPORT_TWO, 
+        'title': L('Eurosport2Title'), 
+        'subtitle': L('Eurosport2Subtitle'), 
+        'summary': L('Eurosport2Summary'),
+        'thumb': "icon-eurosport2.png" },
     "417": {
         'url': ESPN,
         'title': L('ESPNTitle'), 
         'subtitle': L('ESPNSubtitle'), 
         'summary': L('ESPNSummary'),
         'thumb': "icon-espn.png" },
+    "442": {
+        'url': ESPN_CLASSIC,
+        'title': L('ESPNClassicTitle'), 
+        'subtitle': L('ESPNClassicSubtitle'), 
+        'summary': L('ESPNClassicSummary'),
+        'thumb': "icon-espnclassic.png" },
+    "499": {
+        'url': SKY_SPORTS_XTRA, 
+        'title': L('SkySportsXtraTitle'), 
+        'subtitle': L('SkySportsXtraSubtitle'), 
+        'summary': L('SkySportsXtraSummary'),
+        'thumb': "icon-skysportsxtra.png" },
     "501": {
         'url': SKY_NEWS, 
         'title': L('SkyNewsTitle'), 
@@ -179,6 +210,24 @@ channels = {
         'subtitle': L('NatGeoWildSubtitle'), 
         'summary': L('NatGeoWildSummary'),
         'thumb': "icon-natgeowild.png" },
+    "529": {
+        'url': HISTORY, 
+        'title': L('HistoryTitle'), 
+        'subtitle': L('HistorySubtitle'), 
+        'summary': L('HistorySummary'),
+        'thumb': "icon-history.png" },
+    "532": {
+        'url': EDEN, 
+        'title': L('EdenTitle'), 
+        'subtitle': L('EdenSubtitle'), 
+        'summary': L('EdenSummary'),
+        'thumb': "icon-eden.png" },
+    "553": {
+        'url': CRIME_AND_INVESTIGATION, 
+        'title': L('CrimeInvestigationTitle'), 
+        'subtitle': L('CrimeInvestigationSubtitle'), 
+        'summary': L('CrimeInvestigationSummary'),
+        'thumb': "icon-crimeinvestigation.png" },
     "601": {
         'url': CARTOON_NETWORK, 
         'title': L('CartoonNetworkTitle'), 
@@ -226,12 +275,12 @@ group_names = [
     str(L('Kids'))]
 
 groups = {
-    str(L('Entertainment')): [ "106", "107", "108", "110", "126" ],
+    str(L('Entertainment')): [ "106", "107", "108", "110", "122", "126" ],
     str(L('Lifestyle')): [ "243" ],
     str(L('Movies')): [ "301", "303", "305", "306" ],
-    str(L('Sports')): [ "401", "402", "403", "404", "405", "417" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "411", "417", "442", "499" ],
     str(L('News')): [ "501" ],
-    str(L('Documentaries')): [ "526", "528" ],
+    str(L('Documentaries')): [ "526", "528", "529", "532", "553" ],
     str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
 
 on_demand_channels = {
@@ -345,6 +394,10 @@ def GroupMenu(sender, group_name = ''):
 def NowAndNext(channel_url):
     epg = JSON.ObjectFromURL(EPG_URL % dict(time = dt.now().strftime('%Y%m%d%H%M'), channels = channel_url))
     
+    # Check to see if we've received anything.
+    if epg == "":
+        return ""
+    
     # Check to see if we have been given any channel.
     if epg.has_key('channels') == False:
         return ""
@@ -424,8 +477,12 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
         
         url = title_detail['url']
         
+        # We should only display content which actually comes from the skyplayer website. It's 
+        # possible that some titles might actually be linked to the BBC
+        if url.startswith("http://skyplayer.sky.com/vod") == False:
+            continue
+        
         # If the associated URL is pointing to a series, then we need to transition into a sub-menu
-        #
         if url.find('/seriesId/') != -1:
             dir.Append(Function(
                 DirectoryItem(
@@ -453,13 +510,24 @@ def OnDemandSeriesMenu(sender, series_url):
     
     for title_detail in TitleDetails(series_url):
         
+        url = title_detail['url']
+        
+        # We should only display content which actually comes from the skyplayer website. It's 
+        # possible that some titles might actually be linked to the BBC
+        if url.startswith("http://skyplayer.sky.com/vod") == False:
+            continue
+        
         dir.Append(WebVideoItem(
-            title_detail['url'],
+            url,
             title = title_detail['title'],
             subtitle = title_detail['subtitle'],
             summary = title_detail['summary'],
             infoLabel = title_detail['label'],
             thumb = title_detail['image']))
+    
+    # If there are no titles, we should warn the user.
+    if len(dir) == 0:
+        return MessageContainer(sender.itemTitle, L('ErrorNoTitles'))
     
     return dir
 
@@ -476,11 +544,20 @@ def TitleDetails(url):
         title = slot.xpath(".//h3/span/text()")[0]
         description = slot.xpath(".//div[@class='slotDetails']/div[@class='synopsis']/p/text()")[0]
 
+        image = ""
         image_style = slot.xpath(".//div[@class='slotBkg']")[0].get('style')
         image_style_split = image_style.split("'")
         if len(image_style_split) == 3:
             image = image_style_split[1]
-        url = "http://skyplayer.sky.com" + slot.xpath(".//a[contains(concat(' ',normalize-space(@class),' '),' slideButton ')]")[0].get('href')
+ 
+        # If the specified URL is relative, then translate it
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
+        
+        # If the specified URL is relative, then translate it
+        url = slot.xpath(".//a[contains(concat(' ',normalize-space(@class),' '),' slideButton ')]")[0].get('href')
+        if url.startswith("http") == False:
+            url = BASE_URL + url
     
         titles.append({
             'title': title, 
@@ -497,8 +574,16 @@ def TitleDetails(url):
     for component in video_components:
         title = component.xpath(".//h3/a/text()")[0].lstrip().rstrip()
         description = component.xpath(".//p/text()")[0]
+ 
+        # If the specified URL is relative, then translate it
         image = component.xpath(".//img")[0].get('src')
-        url = "http://skyplayer.sky.com" + component.xpath(".//a")[0].get('href')
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
+        
+        # If the specified URL is relative, then translate it
+        url = component.xpath(".//a")[0].get('href')
+        if url.startswith("http") == False:
+            url = BASE_URL + url
     
         titles.append({
             'title': title, 
@@ -514,8 +599,17 @@ def TitleDetails(url):
     for item in items:
         
         title = item.xpath(".//h3")[0].get('title')
-        image = "http://skyplayer.sky.com" + String.Quote(item.xpath(".//img")[0].get('src'))
-        url = "http://skyplayer.sky.com" + item.xpath(".//a")[0].get('href')
+
+        # If the specified URL is relative, then translate it
+        image = item.xpath(".//img")[0].get('src')
+        if image.startswith("http") == False:
+            image = BASE_URL + String.Quote(image)
+        
+        # If the specified URL is relative, then translate it
+        url = item.xpath(".//a")[0].get('href')
+        if url.startswith("http") == False:
+            url = BASE_URL + url
+        
         channel = ""
         try:
             channel = item.xpath(".//span[@class='broadcastChannel']/text()")[0]
