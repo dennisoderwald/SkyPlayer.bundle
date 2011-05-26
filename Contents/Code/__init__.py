@@ -162,7 +162,7 @@ channels = {
         'subtitle': L('SkySportsNewsSubtitle'), 
         'summary': L('SkySportsNewsSummary'),
         'thumb': "icon-skysportsnews.png" },
-    "405": {
+    "410": {
         'url': EURO_SPORT, 
         'title': L('EurosportTitle'), 
         'subtitle': L('EurosportSubtitle'), 
@@ -278,7 +278,7 @@ groups = {
     str(L('Entertainment')): [ "106", "107", "108", "110", "122", "126" ],
     str(L('Lifestyle')): [ "243" ],
     str(L('Movies')): [ "301", "303", "305", "306" ],
-    str(L('Sports')): [ "401", "402", "403", "404", "405", "411", "417", "442", "499" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "410", "411", "417", "442", "499" ],
     str(L('News')): [ "501" ],
     str(L('Documentaries')): [ "526", "528", "529", "532", "553" ],
     str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
