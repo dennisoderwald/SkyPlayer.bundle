@@ -3,18 +3,20 @@ from datetime import datetime as dt
 
 ####################################################################################################
 
-VIDEO_PREFIX = "/video/skyplayer"
+VIDEO_PREFIX = "/video/skygo"
 
 NAME = L('Title')
 
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
+ICON_SEARCH = 'icon-search.png'
 
-BASE_URL = 'http://skyplayer.sky.com'
-LOGIN_URL = 'https://skyplayer.sky.com/vod/content/Home/Application_Navigation/Sign_in/content/login.do'
-PLAYER_URL = 'http://skyplayer.sky.com/vod/page/playLiveTv.do?epgChannelId=%s'
+BASE_URL = 'http://go.sky.com'
+PLAYER_URL = 'http://go.sky.com/vod/page/tvListing.do?epgChannelId=%s'
+CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/200/200/skychb%s.png'
 EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
-ON_DEMAND_URL = 'http://skyplayer.sky.com/vod/content/%s/Browse_by_Genre/%s/content/default/promoPage.do'
+ON_DEMAND_URL = 'http://go.sky.com/vod/content/%s/Browse_by_Genre/%s/content/default/promoPage.do'
+SEARCH_URL = 'http://go.sky.com/vod/content/Home/Application_Navigation/Search_All/content/default/search.do?searchTerm=%s&searchTypeFilter=titleNameSearch'
 
 # Entertainment
 SKY_ONE = "1402"
@@ -70,200 +72,167 @@ channels = {
         'url': SKY_ONE, 
         'title': L('Sky1Title'), 
         'subtitle': L('Sky1Subtitle'), 
-        'summary': L('Sky1Summary'),
-        'thumb': "icon-sky1.png" },
+        'summary': L('Sky1Summary')},
     "107": {
         'url': SKY_LIVING, 
         'title': L('SkyLivingTitle'), 
         'subtitle': L('SkyLivingSubtitle'), 
-        'summary': L('SkyLivingSummary'),
-        'thumb': "icon-skyliving.png" },
+        'summary': L('SkyLivingSummary')},
     "108": {
         'url': SKY_ATLANTIC, 
         'title': L('SkyAtlanticTitle'), 
         'subtitle': L('SkyAtlanticSubtitle'), 
-        'summary': L('SkyAtlanticSummary'),
-        'thumb': "icon-skyatlantic.png" },
+        'summary': L('SkyAtlanticSummary')},
     "110": {
         'url': GOLD, 
         'title': L('GoldTitle'), 
         'subtitle': L('GoldSubtitle'), 
-        'summary': L('GoldSummary'),
-        'thumb': "icon-gold.png" },
+        'summary': L('GoldSummary')},
     "122": {
         'url': SKY_LIVING_IT, 
         'title': L('SkyLivingitTitle'), 
         'subtitle': L('SkyLivingitSubtitle'), 
-        'summary': L('SkyLivingitSummary'),
-        'thumb': "icon-skylivingit.png" },
+        'summary': L('SkyLivingitSummary')},
     "126": {
         'url': MTV, 
         'title': L('MTVTitle'), 
         'subtitle': L('MTVSubtitle'), 
-        'summary': L('MTVSummary'),
-        'thumb': "icon-mtv.png" },
+        'summary': L('MTVSummary')},
     "243": {
         'url': SKY_ARTS_ONE, 
         'title': L('SkyArts1Title'), 
         'subtitle': L('SkyArts1Subtitle'), 
-        'summary': L('SkyArts1Summary'),
-        'thumb': "icon-skyarts1.png" },
+        'summary': L('SkyArts1Summary')},
     "301": {
         'url': SKY_PREMIERE, 
         'title': L('SkyPremiereTitle'), 
         'subtitle': L('SkyPremiereSubtitle'), 
-        'summary': L('SkyPremiereSummary'),
-        'thumb': "icon-skypremiere.png" },
+        'summary': L('SkyPremiereSummary')},
     "303": {
         'url': SKY_SHOWCASE, 
         'title': L('SkyMoviesShowcaseTitle'), 
         'subtitle': L('SkyMoviesShowcaseSubtitle'), 
-        'summary': L('SkyMoviesShowcaseSummary'),
-        'thumb': "icon-skymoviesshowcase.png" },
+        'summary': L('SkyMoviesShowcaseSummary')},
     "305": {
         'url': SKY_ACTION, 
         'title': L('SkyMoviesActionAdventureTitle'), 
         'subtitle': L('SkyMoviesActionAdventureSubtitle'), 
-        'summary': L('SkyMoviesActionAdventureSummary'),
-        'thumb': "icon-skymoviesactionadventure.png" },
+        'summary': L('SkyMoviesActionAdventureSummary')},
     "306": {
         'url': SKY_FAMILY, 
         'title': L('SkyMoviesFamilyTitle'), 
         'subtitle': L('SkyMoviesFamilySubtitle'), 
-        'summary': L('SkyMoviesFamilySummary'),
-        'thumb': "icon-skymoviesfamily.png" },
+        'summary': L('SkyMoviesFamilySummary')},
     "401": {
         'url': SKY_SPORTS_ONE, 
         'title': L('SkySports1Title'), 
         'subtitle': L('SkySports1Subtitle'), 
-        'summary': L('SkySports1Summary'),
-        'thumb': "icon-skysports1.png" },
+        'summary': L('SkySports1Summary')},
     "402": {
         'url': SKY_SPORTS_TWO, 
         'title': L('SkySports2Title'), 
         'subtitle': L('SkySports2Subtitle'), 
-        'summary': L('SkySports2Summary'),
-        'thumb': "icon-skysports2.png" },
+        'summary': L('SkySports2Summary')},
     "403": {
         'url': SKY_SPORTS_THREE, 
         'title': L('SkySports3Title'), 
         'subtitle': L('SkySports3Subtitle'), 
-        'summary': L('SkySports3Summary'),
-        'thumb': "icon-skysports3.png" },
+        'summary': L('SkySports3Summary')},
     "404": {
         'url': SKY_SPORTS_FOUR, 
         'title': L('SkySports4Title'), 
         'subtitle': L('SkySports4Subtitle'), 
-        'summary': L('SkySports4Summary'),
-        'thumb': "icon-skysports4.png" },
+        'summary': L('SkySports4Summary')},
     "405": {
         'url': SKY_SPORTS_NEWS, 
         'title': L('SkySportsNewsTitle'), 
         'subtitle': L('SkySportsNewsSubtitle'), 
-        'summary': L('SkySportsNewsSummary'),
-        'thumb': "icon-skysportsnews.png" },
+        'summary': L('SkySportsNewsSummary')},
     "410": {
         'url': EURO_SPORT, 
         'title': L('EurosportTitle'), 
         'subtitle': L('EurosportSubtitle'), 
-        'summary': L('EurosportSummary'),
-        'thumb': "icon-eurosport.png" },
+        'summary': L('EurosportSummary')},
     "411": {
         'url': EURO_SPORT_TWO, 
         'title': L('Eurosport2Title'), 
         'subtitle': L('Eurosport2Subtitle'), 
-        'summary': L('Eurosport2Summary'),
-        'thumb': "icon-eurosport2.png" },
+        'summary': L('Eurosport2Summary')},
     "417": {
         'url': ESPN,
         'title': L('ESPNTitle'), 
         'subtitle': L('ESPNSubtitle'), 
-        'summary': L('ESPNSummary'),
-        'thumb': "icon-espn.png" },
+        'summary': L('ESPNSummary')},
     "442": {
         'url': ESPN_CLASSIC,
         'title': L('ESPNClassicTitle'), 
         'subtitle': L('ESPNClassicSubtitle'), 
-        'summary': L('ESPNClassicSummary'),
-        'thumb': "icon-espnclassic.png" },
+        'summary': L('ESPNClassicSummary')},
     "499": {
         'url': SKY_SPORTS_XTRA, 
         'title': L('SkySportsXtraTitle'), 
         'subtitle': L('SkySportsXtraSubtitle'), 
-        'summary': L('SkySportsXtraSummary'),
-        'thumb': "icon-skysportsxtra.png" },
+        'summary': L('SkySportsXtraSummary')},
     "501": {
         'url': SKY_NEWS, 
         'title': L('SkyNewsTitle'), 
         'subtitle': L('SkyNewsSubtitle'), 
-        'summary': L('SkyNewsSummary'),
-        'thumb': "icon-skynews.png" },
+        'summary': L('SkyNewsSummary')},
     "526": {
         'url': NAT_GEO, 
         'title': L('NatGeoTitle'), 
         'subtitle': L('NatGeoSubtitle'), 
-        'summary': L('NatGeoSummary'),
-        'thumb': "icon-natgeo.png" },
+        'summary': L('NatGeoSummary')},
     "528": {
         'url': NAT_GEO_WILD, 
         'title': L('NatGeoWildTitle'), 
         'subtitle': L('NatGeoWildSubtitle'), 
-        'summary': L('NatGeoWildSummary'),
-        'thumb': "icon-natgeowild.png" },
+        'summary': L('NatGeoWildSummary')},
     "529": {
         'url': HISTORY, 
         'title': L('HistoryTitle'), 
         'subtitle': L('HistorySubtitle'), 
-        'summary': L('HistorySummary'),
-        'thumb': "icon-history.png" },
+        'summary': L('HistorySummary')},
     "532": {
         'url': EDEN, 
         'title': L('EdenTitle'), 
         'subtitle': L('EdenSubtitle'), 
-        'summary': L('EdenSummary'),
-        'thumb': "icon-eden.png" },
+        'summary': L('EdenSummary')},
     "553": {
         'url': CRIME_AND_INVESTIGATION, 
         'title': L('CrimeInvestigationTitle'), 
         'subtitle': L('CrimeInvestigationSubtitle'), 
-        'summary': L('CrimeInvestigationSummary'),
-        'thumb': "icon-crimeinvestigation.png" },
+        'summary': L('CrimeInvestigationSummary')},
     "601": {
         'url': CARTOON_NETWORK, 
         'title': L('CartoonNetworkTitle'), 
         'subtitle': L('CartoonNetworkSubtitle'), 
-        'summary': L('CartoonNetworkSummary'),
-        'thumb': "icon-cartoonnetwork.png" },
+        'summary': L('CartoonNetworkSummary')},
     "603": {
         'url': BOOMERANG, 
         'title': L('BoomerangTitle'), 
         'subtitle': L('BoomerangSubtitle'), 
-        'summary': L('BoomerangSummary'),
-        'thumb': "icon-boomerang.png" },
+        'summary': L('BoomerangSummary')},
     "604": {
         'url': NICKELODEON, 
         'title': L('NickelodeonTitle'), 
         'subtitle': L('NickelodeonSubtitle'), 
-        'summary': L('NickelodeonSummary'),
-        'thumb': "icon-nickelodeon.png" },
+        'summary': L('NickelodeonSummary')},
     "607": {
         'url': DISNEY_XD, 
         'title': L('DisneyXDTitle'), 
         'subtitle': L('DisneyXDSubtitle'), 
-        'summary': L('DisneyXDSummary'),
-        'thumb': "icon-disneyxd.png" },
+        'summary': L('DisneyXDSummary')},
     "609": {
         'url': DISNEY_CHANNEL, 
         'title': L('DisneyChannelTitle'), 
         'subtitle': L('DisneyChannelSubtitle'), 
-        'summary': L('DisneyChannelSummary'),
-        'thumb': "icon-disneychannel.png" },
+        'summary': L('DisneyChannelSummary')},
     "615": {
         'url': NICKELODEON_JR, 
         'title': L('NickelodeonJrTitle'), 
         'subtitle': L('NickelodeonJrSubtitle'), 
-        'summary': L('NickelodeonJrSummary'),
-        'thumb': "icon-nickjr.png" }}
+        'summary': L('NickelodeonJrSummary')}}
 
 group_names = [ 
     str(L('Entertainment')), 
@@ -331,8 +300,9 @@ def Start():
 def MainMenu():
     dir = MediaContainer(viewMode="List")
     
-    dir.Append(Function(DirectoryItem(LiveMenu, "Live")))
-    dir.Append(Function(DirectoryItem(OnDemandMainMenu, "On Demand")))
+    dir.Append(Function(DirectoryItem(LiveMenu, "Channels")))
+    dir.Append(Function(DirectoryItem(OnDemandMainMenu, "Anytime+")))
+    dir.Append(Function(InputDirectoryItem(Search, L('Search'), L('SearchPrompt'), thumb = R(ICON_SEARCH))))
     
     # Preferences
     dir.Append(PrefsItem(L('Preferences'), thumb=R('icon-prefs.png')))
@@ -385,7 +355,7 @@ def GroupMenu(sender, group_name = ''):
             subtitle = channel['subtitle'],
             summary = description,
             infoLabel = channel_number,
-            thumb = R(channel['thumb'])))
+            thumb = CHANNEL_LOGO_URL % channel['url']))
     
     return dir
 
@@ -393,7 +363,7 @@ def GroupMenu(sender, group_name = ''):
 # channel. This information includes the name of the show, along with a brief description.
 def NowAndNext(channel_url):
     epg = JSON.ObjectFromURL(EPG_URL % dict(time = dt.now().strftime('%Y%m%d%H%M'), channels = channel_url))
-    
+
     # Check to see if we've received anything.
     if epg == "":
         return ""
@@ -416,11 +386,14 @@ def NowAndNext(channel_url):
 
     # Determine the details of the titles which are "Now and Next"
     now_title = programs[0]['title']
-    now_desc = programs[0]['shortDesc']
+    now_desc = ""
+    if programs[0].has_key('shortDesc'):
+        now_desc = programs[0]['shortDesc']
 
     next_title = programs[1]['title']
-    next_desc = programs[1]['shortDesc']
-    
+    next_desc = ""
+    if programs[1].has_key('shortDesc'):
+        next_desc = programs[1]['shortDesc']
     
     return { "Now" : { "Title": now_title, "Description": now_desc }, "Next" : { "Title": next_title, "Description": next_desc } }
 
@@ -477,9 +450,9 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
         
         url = title_detail['url']
         
-        # We should only display content which actually comes from the skyplayer website. It's 
+        # We should only display content which actually comes from the skygo website. It's 
         # possible that some titles might actually be linked to the BBC
-        if url.startswith("http://skyplayer.sky.com/vod") == False:
+        if url.startswith("http://go.sky.com/vod") == False:
             continue
         
         # If the associated URL is pointing to a series, then we need to transition into a sub-menu
@@ -512,9 +485,9 @@ def OnDemandSeriesMenu(sender, series_url):
         
         url = title_detail['url']
         
-        # We should only display content which actually comes from the skyplayer website. It's 
+        # We should only display content which actually comes from the go website. It's 
         # possible that some titles might actually be linked to the BBC
-        if url.startswith("http://skyplayer.sky.com/vod") == False:
+        if url.startswith("http://go.sky.com/vod") == False:
             continue
         
         dir.Append(WebVideoItem(
@@ -625,3 +598,50 @@ def TitleDetails(url):
             'url': url})
 
     return titles
+
+####################################################################################################
+
+def Search(sender, query, url = None):
+    dir = MediaContainer(viewGroup = 'InfoList', title2 = sender.itemTitle)
+    
+    url = SEARCH_URL % String.Quote(query)
+    search_page = HTML.ElementFromURL(url)
+
+    items = search_page.xpath("//div[@class='resultsBlock']//div[@class='promoItem ']")
+    for item in items:
+    
+        title = item.xpath(".//div[@class='synopsisText']/h2/a/text()")[0]
+    
+        # If the specified URL is relative, then translate it
+        image = item.xpath("./a//img")[0].get('src')
+        if image.startswith("http") == False:
+            image = BASE_URL + image
+    
+        # If the specified URL is relative, then translate it
+        url = item.xpath(".//a")[0].get('href')
+        if url.startswith("http") == False:
+            url = BASE_URL + url
+    
+        # [Optional] - The Summary
+        summary = None
+        try: summary = item.xpath(".//div[@class='synopsisText']/p/text()")[0]
+        except: pass
+                
+        # [Optional] - The Summary
+        subtitle = None
+        try: subtitle = item.xpath(".//div[@class='synopsisText']//div[@class='availability']/text()")[0]
+        except: pass
+    
+        # Add the found item to the collection
+        dir.Append(WebVideoItem(
+            url,
+            title = title,
+            subtitle = subtitle,
+            summary = summary,
+            thumb = image))
+
+    # If there are no titles, we should warn the user.
+    if len(dir) == 0:
+        return MessageContainer(sender.itemTitle, L('ErrorNoTitles'))
+            
+    return dir

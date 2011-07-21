@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site site="http://skyplayer.sky.com/vod/content"
+<site site="http://go.sky.com/vod/content"
+    agent="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12"
     plugin="silverlight"
-    identifier="com.plexapp.plugins.skyplayer"
+    identifier="com.plexapp.plugins.skygo"
     initialState="wait-for-frame-load"
     manualLock="true"
     version="1.0">
@@ -11,7 +12,7 @@
         <and>
             <!-- Check if a specific element exists in the page, for example the loginform -->
             <!-- Returns true if we need to login -->
-            <javascript script="document.cookie.indexOf('; skySSO=')" matches="-1" />
+            <javascript script="CliUIGetCookie('skySSO') == ''" matches="1" />
         </and>
     </condition>
 
@@ -20,7 +21,7 @@
         <event>
             <condition>
                 <!-- Wait for the DOM to load... -->
-                <frameLoaded />
+                <javascript script="CliUIGetCookie != null" matches="1" />
             </condition>
             <action>
                 <!-- ...then goto the 'check-for-auth' state -->
@@ -39,7 +40,8 @@
                 </not>
             </condition>
             <action>
-                <goto state="cleanup" />
+                <lockPlugin />
+                <goto state="silverlight-loading" />
             </action>
         </event>
         <event>
@@ -50,7 +52,7 @@
             <action>
                 <!-- The state machine will wait until the URL has fully loaded before moving -->
                 <!-- onto the next state. -->
-                <visit url="https://skyplayer.sky.com/vod/content/Home/Application_Navigation/Sign_in/content/login.do"/>
+                <visit url="https://skyid.sky.com/signin/skygo?successUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FcancelLogin.do&amp;cancelUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FcancelLogin.do&amp;nonCustomerContinueUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FcancelLogin.do"/>
                 <goto state="try-to-login"/>
             </action>
         </event>
@@ -67,8 +69,8 @@
                 <!-- Fill in the username, password and nexturl of the page. -->
                 <!-- We need to submit the form so that the page's handlers can populate the other -->
                 <!-- required post data. -->
-                <run script="page='${url}';index=page.indexOf('/page/');document.login.userName.value='${username}';document.login.password.value='${password}';document.login.nextUrl.value=page.substring(index);document.login.submit();" />
-                <pause time="2000" />
+                <run script="username.value='${username}';password.value='${password}';signinform.submit();" />
+                <pause time="500" />
                 <goto state="check-for-auth-again" />
             </action>
         </event>
@@ -78,14 +80,15 @@
     <state name="check-for-auth-again">
         <event>
             <condition>
-                <!-- If login was successful we should now not need to login and can go to the state 'cleanup' -->
+                <!-- If login was successful we should now not need to login and can go to the state 'silverlight-loading' -->
                 <not>
                     <condition name="need-to-login" />
                 </not>
             </condition>
             <action>
                 <visit url="${url}" />
-                <goto state="cleanup" />
+                <lockPlugin />
+                <goto state="silverlight-loading" />
             </action>
         </event>
         <event>
@@ -95,35 +98,6 @@
             </condition>
             <action>
                 <goto state="end" param="Please check your username and password in the plugin's settings" />
-            </action>
-        </event>
-    </state>
-
-    <!-- Cleanup -->
-    <state name="cleanup">
-        <event>
-            <condition>
-                <!-- We should wait until the DOM contains the main silverlight control. -->
-                <javascript script="silverlightControl != undefined" matches="1" />
-            </condition>
-            <action>
-                <!-- The live tv pages contain multiple silverlight controls which means that Plex -->
-                <!-- can easily select the wrong one. Therefore, we simplify the selection by removing -->
-                <!-- everything else from the page before progressing to the 'playing' state. -->
-                <run script="iframes = document.getElementsByTagName('iframe'); for (i=0; i&lt;iframes.length; i++){iframes[i].src='';}" />
-                <pause time="1000" />
-                <lockPlugin />
-                <goto state="silverlight-loading" />
-            </action>
-        </event>
-        <event>
-            <condition>
-                <!-- Check to see if the 'Play' button is visible. If this is false, then it's likely -->
-                <!-- that the user does not have permission to play this content. -->
-                <javascript script="$('#play_primary_meta_id_anchor').is(':visible')" matches="1" />
-            </condition>
-            <action>
-                <goto state="end" param="This title is not available on this machine for your Sky subscription" />
             </action>
         </event>
     </state>
@@ -138,6 +112,12 @@
                 <!-- Click the play button located on the player -->
                 <pause time="500" />
                 <click x="275" y="125" skipMouseUp="true" />
+                
+                <!-- We need to wait a short period of time for the player to start and then -->
+                <!-- send an additional mouse click to the control. This will force the player's -->
+                <!-- controls to autohide -->
+                <pause time="2000" />
+                <click x="275" y="125" />
                 <goto state="playing" />
             </action>
         </event>
