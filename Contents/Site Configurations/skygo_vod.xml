@@ -2,7 +2,7 @@
 <site site="http://go.sky.com/vod/content"
     agent="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12"
     plugin="silverlight"
-    identifier="com.plexapp.plugins.skygo"
+    identifier="com.plexapp.plugins.skyplayer"
     initialState="wait-for-frame-load"
     manualLock="true"
     version="1.0">
