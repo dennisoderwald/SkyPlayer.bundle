@@ -30,5 +30,10 @@
 	<array>
 		<string>GB</string>
 	</array>
+	<key>PlexSearchServices</key>
+	<dict>
+		<key>SkyGo</key>
+		<string>com.plexapp.search.skyplayer</string>
+	</dict>
 </dict>
 </plist>
