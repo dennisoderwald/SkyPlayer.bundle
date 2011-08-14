@@ -258,22 +258,22 @@ on_demand_channels = {
         'categories': [ "Drama", "Action", "Sci Fi", "Comedy", "Reality", "Game Shows" ]},
     str(L('Lifestyle')): {
         'name': "SKYCULTURE",
-        'categories': [ "Arts and Culture", "Film and Literature", "Homes", "Music", "Performance" ]},
+        'categories': [ "Arts and Culture", "Film and Literature", "Music", "Performance" ]},
     str(L('Movies')): {
         'name': "SKYMOVIES",
         'categories': [ "Showcase", "Comedy", "Action", "Family", "Crime and Thriller", "Sci-Fi", "Drama", "Horror", "Modern Greats", "Classics", "Indie"]},
     str(L('Sports')): {
         'name': "SKYSPORTS",
-        'categories': [ "Football", "Rugby Union", "Cricket", "Golf", "Boxing", "Motorsports", "Darts", "Features", "Tennis"]},
+        'categories': [ "Football", "Soccer AM", "Cricket", "Rugby Union", "Rugby League", "Boxing", "Golf", "Tennis", "Darts", "Features", "Motorsports"]},
     str(L('News')): {
         'name': "SKYNEWS",
-        'categories': [ "Current Affairs", "Factual"]},
+        'categories': [ "Current Affairs", "News Features", "Showbiz"]},
     str(L('Documentaries')): {
         'name': "SKYDOCUMENTARIES",
-        'categories': [ "Crime", "Engineering", "History", "Science and Nature", "Society and Civilisation"]},
+        'categories': [ "Crime", "Engineering", "History", "Society and Civilisation"]},
     str(L('Kids')): {
         'name': "SKYKIDS",
-        'categories': [ "Activities", "Animation", "Adventure", "Entertainment and Comedy", "Educational", "Music", "Teen"]}
+        'categories': [ "Activities", "Adventure", "Entertainment and Comedy", "Educational", "Music", "Movies", "Teen"]}
 }
 
 ####################################################################################################
