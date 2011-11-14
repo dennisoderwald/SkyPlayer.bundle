@@ -6,9 +6,9 @@
     initialState="wait-for-frame-load"
     manualLock="true"
     version="1.0">
-    
+
     <!-- Crop the control to better fill the application -->
-    <crop x="662" y="9" width="326" height="185" />
+    <crop x="0" y="85" width="0" height="600" />
 
     <!-- The condition we use several times from within states to check if we're logged in or not -->
     <condition name="need-to-login">
@@ -44,7 +44,7 @@
             </condition>
             <action>
                 <lockPlugin />
-                <goto state="playing" />
+                <goto state="silverlight-loading" />
             </action>
         </event>
         <event>
@@ -91,7 +91,7 @@
             <action>
                 <visit url="${url}" />
                 <lockPlugin />
-                <goto state="playing" />
+                <goto state="silverlight-loading" />
             </action>
         </event>
         <event>
@@ -101,6 +101,27 @@
             </condition>
             <action>
                 <goto state="end" param="Please check your username and password in the plugin's settings" />
+            </action>
+        </event>
+    </state>
+
+    <!-- Wait for silverlight control to fully load -->
+    <state name="silverlight-loading">
+        <event>
+            <condition>
+                <javascript script="silverlightControl.IsLoaded ? 1 : 0" matches="1" />
+            </condition>
+            <action>
+                <!-- Click the play button located on the player -->
+                <pause time="500" />
+                <click x="275" y="125" skipMouseUp="true" />
+                
+                <!-- We need to wait a short period of time for the player to start and then -->
+                <!-- send an additional mouse click to the control. This will force the player's -->
+                <!-- controls to autohide -->
+                <pause time="2000" />
+                <click x="275" y="125" />
+                <goto state="playing" />
             </action>
         </event>
     </state>
