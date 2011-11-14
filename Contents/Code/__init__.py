@@ -12,7 +12,7 @@ ICON = 'icon-default.png'
 ICON_SEARCH = 'icon-search.png'
 
 BASE_URL = 'http://go.sky.com'
-PLAYER_URL = 'http://go.sky.com/vod/page/tvListing.do?epgChannelId=%s'
+PLAYER_URL = 'http://go.sky.com/vod/page/detachedLiveTv.do?epgChannelId=%s'
 CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/200/200/skychb%s.png'
 EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
 ON_DEMAND_URL = 'http://go.sky.com/vod/content/%s/Browse_by_Genre/%s/content/default/promoPage.do'
