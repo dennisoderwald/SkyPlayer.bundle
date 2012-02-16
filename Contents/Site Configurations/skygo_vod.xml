@@ -70,7 +70,7 @@
                 <!-- We need to submit the form so that the page's handlers can populate the other -->
                 <!-- required post data. -->
                 <run script="username.value='${username}';password.value='${password}';signinform.submit();" />
-                <pause time="500" />
+                <pause time="5000" />
                 <goto state="check-for-auth-again" />
             </action>
         </event>
