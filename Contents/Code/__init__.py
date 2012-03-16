@@ -41,6 +41,7 @@ SKY_SPORTS_TWO = "1302"
 SKY_SPORTS_THREE = "1333"
 SKY_SPORTS_FOUR = "1322"
 SKY_SPORTS_NEWS = "1314"
+SKY_SPORTS_F1 = "1306"
 EURO_SPORT = "1726"
 EURO_SPORT_TWO = "1841"
 ESPN = "3141"
@@ -148,6 +149,11 @@ channels = {
         'title': L('SkySportsNewsTitle'), 
         'subtitle': L('SkySportsNewsSubtitle'), 
         'summary': L('SkySportsNewsSummary')},
+    "408": {
+        'url': SKY_SPORTS_F1, 
+        'title': L('SkySportsF1Title'), 
+        'subtitle': L('SkySportsF1Subtitle'), 
+        'summary': L('SkySportsF1Summary')},
     "410": {
         'url': EURO_SPORT, 
         'title': L('EurosportTitle'), 
@@ -247,7 +253,7 @@ groups = {
     str(L('Entertainment')): [ "106", "107", "108", "110", "122", "126" ],
     str(L('Lifestyle')): [ "243" ],
     str(L('Movies')): [ "301", "303", "305", "306" ],
-    str(L('Sports')): [ "401", "402", "403", "404", "405", "410", "411", "417", "442", "499" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "408", "410", "411", "417", "442", "499" ],
     str(L('News')): [ "501" ],
     str(L('Documentaries')): [ "526", "528", "529", "532", "553" ],
     str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
