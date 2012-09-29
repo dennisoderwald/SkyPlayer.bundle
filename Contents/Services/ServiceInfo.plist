@@ -6,15 +6,10 @@
 	<dict>
 		<key>SkyGo</key>
 		<dict>
-<<<<<<< HEAD
-=======
-			<key>Identifier</key>
-			<string>com.plexapp.plugins.skyplayer</string>
 			<key>TestQueries</key>
 			<array>
 				<string>avatar</string>
 			</array>
->>>>>>> Updated search service
 		</dict>
 	</dict>
 </dict>
