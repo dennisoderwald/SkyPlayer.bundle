@@ -1,4 +1,3 @@
-
 from datetime import datetime as dt
 
 ####################################################################################################
@@ -32,8 +31,15 @@ SKY_ARTS_ONE = "1752"
 # Movies
 SKY_PREMIERE = "1409"
 SKY_SHOWCASE = "1814"
+SKY_COMEDY = "1002"
 SKY_ACTION = "1001"
 SKY_FAMILY = "1808"
+SKY_CRIME = "1818"
+SKY_DRAMA = "1816"
+SKY_SCIFI = "1807"
+SKY_MODERN = "1815"
+SKY_CLASSICS = "1812"
+SKY_INDIE = "1811"
 
 # Sports
 SKY_SPORTS_ONE = "1301"
@@ -46,7 +52,6 @@ EURO_SPORT = "1726"
 EURO_SPORT_TWO = "1841"
 ESPN = "3141"
 ESPN_CLASSIC = "3221"
-SKY_SPORTS_XTRA = "499"
 
 # Children
 CARTOON_NETWORK = "5601"
@@ -55,6 +60,8 @@ NICKELODEON = "1846"
 NICKELODEON_JR = "1857"
 DISNEY_XD = "1843"
 DISNEY_CHANNEL = "1881"
+DISNEY_JR = "1884"
+CARTOON_NITO = "1371"
 
 # Documentaries
 NAT_GEO = "1806"
@@ -114,6 +121,11 @@ channels = {
         'title': L('SkyMoviesShowcaseTitle'), 
         'subtitle': L('SkyMoviesShowcaseSubtitle'), 
         'summary': L('SkyMoviesShowcaseSummary')},
+    "304": {
+        'url': SKY_COMEDY, 
+        'title': "Sky Movies Comedy", 
+        'subtitle': "Watch Sky Movies Comedy online", 
+        'summary': ""},
     "305": {
         'url': SKY_ACTION, 
         'title': L('SkyMoviesActionAdventureTitle'), 
@@ -124,6 +136,36 @@ channels = {
         'title': L('SkyMoviesFamilyTitle'), 
         'subtitle': L('SkyMoviesFamilySubtitle'), 
         'summary': L('SkyMoviesFamilySummary')},
+    "307": {
+        'url': SKY_CRIME, 
+        'title': "Sky Movies Crime & Thriller", 
+        'subtitle': "Watch Sky Movies Crime & Thriller online", 
+        'summary': ""},
+    "308": {
+        'url': SKY_DRAMA, 
+        'title': "Sky Movies Drama & Romance", 
+        'subtitle': "Watch Sky Movies Drama & Romance online", 
+        'summary': ""},
+    "309": {
+        'url': SKY_SCIFI, 
+        'title': "Sky Movies Scifi & Horror", 
+        'subtitle': "Watch Sky Movies Scifi & Horror online", 
+        'summary': ""},
+    "310": {
+        'url': SKY_MODERN, 
+        'title': "Sky Movies Modern Greats", 
+        'subtitle': "Watch Sky Movies Modern Greats online", 
+        'summary': ""},
+    "311": {
+        'url': SKY_CLASSICS, 
+        'title': "Sky Movies Classics", 
+        'subtitle': "Watch Sky Movies Classics online", 
+        'summary': ""},
+    "312": {
+        'url': SKY_INDIE, 
+        'title': "Sky Movies Indie", 
+        'subtitle': "Watch Sky Movies Indie online", 
+        'summary': ""},
     "401": {
         'url': SKY_SPORTS_ONE, 
         'title': L('SkySports1Title'), 
@@ -174,11 +216,6 @@ channels = {
         'title': L('ESPNClassicTitle'), 
         'subtitle': L('ESPNClassicSubtitle'), 
         'summary': L('ESPNClassicSummary')},
-    "499": {
-        'url': SKY_SPORTS_XTRA, 
-        'title': L('SkySportsXtraTitle'), 
-        'subtitle': L('SkySportsXtraSubtitle'), 
-        'summary': L('SkySportsXtraSummary')},
     "501": {
         'url': SKY_NEWS, 
         'title': L('SkyNewsTitle'), 
@@ -234,15 +271,24 @@ channels = {
         'title': L('DisneyChannelTitle'), 
         'subtitle': L('DisneyChannelSubtitle'), 
         'summary': L('DisneyChannelSummary')},
+    "611": {
+        'url': DISNEY_JR, 
+        'title': "Disney Junior", 
+        'subtitle': "Watch Disney Junior online", 
+        'summary': ""},
     "615": {
         'url': NICKELODEON_JR, 
         'title': L('NickelodeonJrTitle'), 
         'subtitle': L('NickelodeonJrSubtitle'), 
-        'summary': L('NickelodeonJrSummary')}}
+        'summary': L('NickelodeonJrSummary')},
+    "619": {
+        'url': CARTOON_NITO, 
+        'title': "Cartoonito", 
+        'subtitle': "Watch Cartoonito online", 
+        'summary': ""}}
 
 group_names = [ 
     str(L('Entertainment')), 
-    str(L('Lifestyle')), 
     str(L('Movies')), 
     str(L('Sports')), 
     str(L('News')), 
@@ -252,34 +298,31 @@ group_names = [
 groups = {
     str(L('Entertainment')): [ "106", "107", "108", "110", "122", "126" ],
     str(L('Lifestyle')): [ "243" ],
-    str(L('Movies')): [ "301", "303", "305", "306" ],
-    str(L('Sports')): [ "401", "402", "403", "404", "405", "408", "410", "411", "417", "442", "499" ],
+    str(L('Movies')): [ "301", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312" ],
+    str(L('Sports')): [ "401", "402", "403", "404", "405", "408", "410", "411", "417", "442" ],
     str(L('News')): [ "501" ],
     str(L('Documentaries')): [ "526", "528", "529", "532", "553" ],
-    str(L('Kids')): [ "601", "603", "604", "607", "609", "615" ]}
+    str(L('Kids')): [ "601", "603", "604", "607", "609", "611", "615", "619" ]}
 
 on_demand_channels = {
     str(L('Entertainment')): {
         'name': "SKYENTERTAINMENT",
-        'categories': [ "Drama", "Action", "Sci Fi", "Comedy", "Reality", "Game Shows" ]},
-    str(L('Lifestyle')): {
-        'name': "SKYCULTURE",
-        'categories': [ "Arts and Culture", "Film and Literature", "Music", "Performance" ]},
+        'categories': [ "Drama", "Action", "Sci Fi", "Comedy", "Arts", "Reality", "Game Shows" ]},
     str(L('Movies')): {
         'name': "SKYMOVIES",
-        'categories': [ "Showcase", "Comedy", "Action", "Family", "Crime and Thriller", "Sci-Fi", "Drama", "Horror", "Modern Greats", "Classics", "Indie"]},
+        'categories': [ "Box Sets", "Action", "Family", "Comedy", "Crime and Thriller", "Indie", "Drama", "Modern Greats", "Horror", "Sci-Fi", "Classics"]},
     str(L('Sports')): {
         'name': "SKYSPORTS",
-        'categories': [ "Football", "Soccer AM", "Cricket", "Rugby Union", "Rugby League", "Boxing", "Golf", "Tennis", "Darts", "Features", "Motorsports"]},
+        'categories': [ "Football", "Soccer AM", "Formula 1", "Shows", "Cricket", "Rugby Union", "Rugby League", "Boxing", "Golf", "Tennis", "Darts", "Features"]},
     str(L('News')): {
         'name': "SKYNEWS",
-        'categories': [ "Current Affairs", "News Features", "Showbiz"]},
+        'categories': [ "News Specials", "News Features", "Showbiz"]},
     str(L('Documentaries')): {
         'name': "SKYDOCUMENTARIES",
         'categories': [ "Crime", "Engineering", "History", "Society and Civilisation"]},
     str(L('Kids')): {
         'name': "SKYKIDS",
-        'categories': [ "Activities", "Adventure", "Entertainment and Comedy", "Educational", "Music", "Movies", "Teen"]}
+        'categories': [ "Activities", "Adventure", "Animation", "Drama", "Entertainment and Comedy", "Factual", "Music", "Pre-School", "Teen"]}
 }
 
 ####################################################################################################
@@ -299,7 +342,7 @@ def Start():
     MediaContainer.viewGroup = "InfoList"
     DirectoryItem.thumb = R(ICON)
 
-    HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27'
+    HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4'
 
 # This main function will setup the displayed items. This will depend if the user is currently 
 # logged in.
@@ -458,7 +501,7 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
         
         # We should only display content which actually comes from the skygo website. It's 
         # possible that some titles might actually be linked to the BBC
-        if url.startswith("http://go.sky.com/vod") == False:
+        if url.startswith("http://go.sky.com/vod") == False or "BBC" in title_detail['subtitle']:
             continue
         
         # If the associated URL is pointing to a series, then we need to transition into a sub-menu
@@ -514,7 +557,7 @@ def TitleDetails(url):
     page = HTML.ElementFromURL(url)
 
     titles = []
-    
+
     # Slots
     # These elements are normally located at the top of the page and contain the featured titles
     # available for the current category. 
@@ -545,39 +588,19 @@ def TitleDetails(url):
             'label': "Feature",
             'image': image,
             'url': url})
-    
-    # Video Components
-    # These elements tend to be used when displaying movies. They contain a description field which
-    # is useful as a summary.
-    video_components = page.xpath("//div[contains(@class, 'video-component')]")
-    for component in video_components:
-        title = component.xpath(".//h3/a/text()")[0].lstrip().rstrip()
-        description = component.xpath(".//p/text()")[0]
- 
-        # If the specified URL is relative, then translate it
-        image = component.xpath(".//img")[0].get('src')
-        if image.startswith("http") == False:
-            image = BASE_URL + String.Quote(image)
-        
-        # If the specified URL is relative, then translate it
-        url = component.xpath(".//a")[0].get('href')
-        if url.startswith("http") == False:
-            url = BASE_URL + url
-    
-        titles.append({
-            'title': title, 
-            'summary': description,
-            'subtitle': "",
-            'label': "",
-            'image': image,
-            'url': url})
-    
+
     # Promo Items
     # These are used most commonly when displayed list of series and episodes.
-    items = page.xpath("//div[@class='listRows ']/div[contains(concat(' ',normalize-space(@class),' '),' promoItem ')]")
+    items = page.xpath("//div[contains(concat(' ',normalize-space(@class),' '),' promoItem ')]")
     for item in items:
-        
-        title = item.xpath(".//h3")[0].get('title')
+    
+        try:
+            title = item.xpath(".//h3")[0].get('title').strip()
+        except:
+            try:
+                title = item.xpath(".//h3/a")[0].get('title').strip()
+            except:
+                title = item.xpath(".//h3//text()")[0].strip()
 
         # If the specified URL is relative, then translate it
         image = item.xpath(".//img")[0].get('src')
@@ -613,7 +636,7 @@ def Search(sender, query, url = None):
     url = SEARCH_URL % String.Quote(query)
     search_page = HTML.ElementFromURL(url)
 
-    items = search_page.xpath("//div[@class='resultsBlock']//div[@class='promoItem ']")
+    items = search_page.xpath("//div[@class='resultsBlock']//div[contains(@class,'promoItem')]")
     for item in items:
     
         title = item.xpath(".//div[@class='synopsisText']/h2/a/text()")[0]
