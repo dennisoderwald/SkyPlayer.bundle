@@ -6,6 +6,10 @@
 	<dict>
 		<key>SkyGo</key>
 		<dict>
+			<key>TestQueries</key>
+			<array>
+				<string>avatar</string>
+			</array>
 		</dict>
 	</dict>
 </dict>
