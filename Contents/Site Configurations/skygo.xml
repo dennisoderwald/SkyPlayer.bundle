@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site site="http://go.sky.com/vod/page"
-    agent="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_6; en-gb) AppleWebKit/528.16 (KHTML, like Gecko) Version/4.0 Safari/528.16"
+    agent="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
     plugin="silverlight"
     identifier="com.plexapp.plugins.skyplayer"
     initialState="wait-for-frame-load"
