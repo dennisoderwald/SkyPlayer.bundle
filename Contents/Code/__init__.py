@@ -2,8 +2,6 @@ from datetime import datetime as dt
 
 ####################################################################################################
 
-VIDEO_PREFIX = "/video/skygo"
-
 NAME = L('Title')
 
 ART = 'art-default.jpg'
@@ -332,55 +330,59 @@ on_demand_channels = {
 def Start():
 
     # Initialize the plugin
-    Plugin.AddPrefixHandler(VIDEO_PREFIX, MainMenu, NAME, ICON, ART)
     Plugin.AddViewGroup("List", viewMode = "List", mediaType = "items")
     Plugin.AddViewGroup("InfoList", viewMode = "InfoList", mediaType = "items")
 
     # Setup the artwork associated with the plugin
-    MediaContainer.art = R(ART)
-    MediaContainer.title1 = NAME
-    MediaContainer.viewGroup = "InfoList"
-    DirectoryItem.thumb = R(ICON)
+    ObjectContainer.art = R(ART)
+    ObjectContainer.title1 = NAME
+    ObjectContainer.view_group = "InfoList"
+
+    DirectoryObject.art = R(ART)
+    DirectoryObject.thumb = R(ICON)
+    VideoClipObject.art = R(ART)
+    VideoClipObject.thumb = R(ICON)
 
     HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4'
 
 # This main function will setup the displayed items. This will depend if the user is currently 
 # logged in.
+@handler('/video/skygo', NAME, art = ART, thumb = ICON)
 def MainMenu():
-    dir = MediaContainer(viewMode="List")
-    
-    dir.Append(Function(DirectoryItem(LiveMenu, "Channels")))
-    dir.Append(Function(DirectoryItem(OnDemandMainMenu, "Anytime+")))
-    dir.Append(Function(InputDirectoryItem(Search, L('Search'), L('SearchPrompt'), thumb = R(ICON_SEARCH))))
+    oc = ObjectContainer(view_group = "List")
+
+    oc.add(DirectoryObject(key = Callback(LiveMenu, title = "Channels"), title = "Channels"))
+    oc.add(DirectoryObject(key = Callback(OnDemandMainMenu, title = "Anytime+"), title = "Anytime+"))
+    oc.add(SearchDirectoryObject(identifier="com.plexapp.plugins.skyplayer", title = L('Search'), prompt = L('SearchPrompt'), thumb = R(ICON_SEARCH)))
     
     # Preferences
-    dir.Append(PrefsItem(L('Preferences'), thumb=R('icon-prefs.png')))
+    oc.add(PrefsObject(title = L('Preferences')))
     
-    return dir
+    return oc
 
 ####################################################################################################
 
 # This function will display the available live channels
-def LiveMenu(sender):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
+@route('/video/skygo/live')
+def LiveMenu(title):
+    oc = ObjectContainer(title2 = title)
 
     # List all the different group names
-    for group_name in group_names:
+    for group in group_names:
     
-        dir.Append(Function(
-            DirectoryItem(
-                GroupMenu,
-                group_name),
-                group_name = group_name))
+        oc.add(DirectoryObject(
+            key = Callback(GroupMenu, group = group),
+            title = group))
 
-    return dir
+    return oc
 
 # This function will display a specific group.
-def GroupMenu(sender, group_name = ''):
-    dir = MediaContainer(title2 = group_name)
+@route('/video/skygo/live/{group}')
+def GroupMenu(group):
+    oc = ObjectContainer(title2 = group)
 
     # Create a new item for every channel
-    for channel_number in groups[group_name]:
+    for channel_number in groups[group]:
         
         channel = channels[channel_number]
         
@@ -397,16 +399,14 @@ def GroupMenu(sender, group_name = ''):
                 now_and_next['Now']['Description'], 
                 now_and_next['Next']['Title'], 
                 now_and_next['Next']['Description'])
-        
-        dir.Append(WebVideoItem(
-            GenerateFullUrl(channel['url']),
+
+        oc.add(VideoClipObject(
+            url = GenerateFullUrl(channel['url']),
             title = channel['title'],
-            subtitle = channel['subtitle'],
             summary = description,
-            infoLabel = channel_number,
             thumb = CHANNEL_LOGO_URL % channel['url']))
     
-    return dir
+    return oc
 
 # This function will return details of what is currently playing, and what is next, for the given 
 # channel. This information includes the name of the show, along with a brief description.
@@ -461,41 +461,39 @@ def GenerateFullUrl(channelUrl):
 ####################################################################################################
 
 # This function displays the first OnDemand menu. It contains a list of all the available channels.
-def OnDemandMainMenu(sender):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
+@route('/video/skygo/ondemand')
+def OnDemandMainMenu(title):
+    oc = ObjectContainer(title2 = title)
 
     # List all the different group names
-    for group_name in group_names:
-        dir.Append(Function(
-            DirectoryItem(
-                OnDemandChannelMenu,
-                group_name),
-                channel_name = group_name))
+    for group in group_names:
+        oc.add(DirectoryObject(
+            key = Callback(OnDemandChannelMenu, group = group),
+            title = group))
     
-    return dir
+    return oc
 
 # This function displays the available genres which can be played on demand.
-def OnDemandChannelMenu(sender, channel_name = ""):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
+@route('/video/skygo/ondemand/{group}')
+def OnDemandChannelMenu(group):
+    oc = ObjectContainer(title2 = group)
 
-    channel_details = on_demand_channels[channel_name]
+    channel_details = on_demand_channels[group]
     for category in channel_details['categories']:
-        dir.Append(Function(
-            DirectoryItem(
-                OnDemandCategoryMenu,
-                category),
-                channel_name = channel_name,
-                category_name = category))
+        oc.add(DirectoryObject(
+            key = Callback(OnDemandCategoryMenu, channel = group, category = category),
+            title = category))
 
-    return dir
+    return oc
 
 # This function displays the titles available for the selected genre. If the found URL contains
 # a reference to a series identifier, it will present the option to select an individual episode.
-def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))
+@route('/video/skygo/ondemand/{channel}/{category}')
+def OnDemandCategoryMenu(channel, category):
+    oc = ObjectContainer(title2 = category)
 
-    on_demand_channels[channel_name]['name']
-    for title_detail in TitleDetails(ON_DEMAND_URL % (on_demand_channels[channel_name]['name'], category_name.replace(' ', '_'))):
+    on_demand_channels[channel]['name']
+    for title_detail in TitleDetails(ON_DEMAND_URL % (on_demand_channels[channel]['name'], category.replace(' ', '_'))):
         
         url = title_detail['url']
         
@@ -506,29 +504,23 @@ def OnDemandCategoryMenu(sender, channel_name = "", category_name = ""):
         
         # If the associated URL is pointing to a series, then we need to transition into a sub-menu
         if url.find('/seriesId/') != -1:
-            dir.Append(Function(
-                DirectoryItem(
-                    OnDemandSeriesMenu,
-                    title_detail['title'],
-                    subtitle = title_detail['subtitle'],
-                    summary = title_detail['summary'],
-                    infoLabel = title_detail['label'],
-                    thumb = title_detail['image']),
-                    series_url = url))
-        else:
-            dir.Append(WebVideoItem(
-                url,
+            oc.add(DirectoryObject(
+                key = Callback(OnDemandSeriesMenu, title = title_detail['title'], series_url = url),
                 title = title_detail['title'],
-                subtitle = title_detail['subtitle'],
                 summary = title_detail['summary'],
-                infoLabel = title_detail['label'],
+                thumb = title_detail['image']))
+        else:
+            oc.add(VideoClipObject(
+                url = url,
+                title = title_detail['title'],
+                summary = title_detail['summary'],
                 thumb = title_detail['image']))
 
-    return dir
+    return oc
              
 # This function displays the known episode for the selected series.
-def OnDemandSeriesMenu(sender, series_url):                       
-    dir = MediaContainer(disabledViewModes=["Coverflow"], title1 = L('Title'))   
+def OnDemandSeriesMenu(title, series_url): 
+    oc = ObjectContainer(title2 = title)
     
     for title_detail in TitleDetails(series_url):
         
@@ -538,20 +530,18 @@ def OnDemandSeriesMenu(sender, series_url):
         # possible that some titles might actually be linked to the BBC
         if url.startswith("http://go.sky.com/vod") == False:
             continue
-        
-        dir.Append(WebVideoItem(
-            url,
+
+        oc.add(VideoClipObject(
+            url = url,
             title = title_detail['title'],
-            subtitle = title_detail['subtitle'],
             summary = title_detail['summary'],
-            infoLabel = title_detail['label'],
             thumb = title_detail['image']))
     
     # If there are no titles, we should warn the user.
-    if len(dir) == 0:
+    if len(oc) == 0:
         return MessageContainer(sender.itemTitle, L('ErrorNoTitles'))
     
-    return dir
+    return oc
 
 def TitleDetails(url):
     page = HTML.ElementFromURL(url)
@@ -627,50 +617,3 @@ def TitleDetails(url):
             'url': url})
 
     return titles
-
-####################################################################################################
-
-def Search(sender, query, url = None):
-    dir = MediaContainer(viewGroup = 'InfoList', title2 = sender.itemTitle)
-    
-    url = SEARCH_URL % String.Quote(query)
-    search_page = HTML.ElementFromURL(url)
-
-    items = search_page.xpath("//div[@class='resultsBlock']//div[contains(@class,'promoItem')]")
-    for item in items:
-    
-        title = item.xpath(".//div[@class='synopsisText']/h2/a/text()")[0]
-    
-        # If the specified URL is relative, then translate it
-        image = item.xpath("./a//img")[0].get('src')
-        if image.startswith("http") == False:
-            image = BASE_URL + image
-    
-        # If the specified URL is relative, then translate it
-        url = item.xpath(".//a")[0].get('href')
-        if url.startswith("http") == False:
-            url = BASE_URL + url
-    
-        # [Optional] - The Summary
-        summary = None
-        try: summary = item.xpath(".//div[@class='synopsisText']/p/text()")[0]
-        except: pass
-                
-        # [Optional] - The Summary
-        subtitle = None
-        try: subtitle = item.xpath(".//div[@class='synopsisText']//div[@class='availability']/text()")[0]
-        except: pass
-    
-        # Add the found item to the collection
-        dir.Append(WebVideoItem(
-            url,
-            title = title,
-            subtitle = subtitle,
-            summary = summary,
-            thumb = image))
-
-    # If there are no titles, we should warn the user.
-    if len(dir) == 0:
-        return MessageContainer(sender.itemTitle, L('ErrorNoTitles'))
-            
-    return dir

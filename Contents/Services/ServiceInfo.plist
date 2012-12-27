@@ -6,9 +6,21 @@
 	<dict>
 		<key>SkyGo</key>
 		<dict>
+			<key>Identifier</key>
+			<string>com.plexapp.plugins.skyplayer</string>
 			<key>TestQueries</key>
 			<array>
 				<string>avatar</string>
+			</array>
+		</dict>
+	</dict>
+	<key>URL</key>
+	<dict>
+		<key>SkyGoLive</key>
+		<dict>
+			<key>URLPatterns</key>
+			<array>
+				<string>http://go.sky.com/vod/page/detachedLiveTv.do\?epgChannelId=.+</string>
 			</array>
 		</dict>
 	</dict>
