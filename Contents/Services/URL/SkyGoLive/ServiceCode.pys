@@ -1,6 +1,81 @@
+from datetime import datetime as dt
+
+RE_CHANNEL_ID = Regex('epgChannelId=(?P<id>[0-9]+)')
+
+CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/200/200/skychb%s.png'
+EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
+
+CHANNEL_LOOKUP = {
+	"1402": "Sky One",
+	"2201": "Sky Living",
+	"1412": "Sky Atlantic",
+	"2304": "Gold",
+	"2207": "Sky Living It",
+	"2501": "MTV",
+
+	"1752": "Sky Arts One",
+
+	"1409": "Sky Premiere",
+	"1814": "Sky Showcase",
+	"1002": "Sky Comedy",
+	"1001": "Sky Action",
+	"1808": "Sky Family",
+	"1816": "Sky Drama",
+	"1807": "Sky Sci-Fi",
+	"1815": "Sky Modern",
+	"1812": "Sky Classics",
+	"1811": "Sky Indie",
+
+	"1301": "Sky Sports One",
+	"1302": "Sky Sports Two",
+	"1333": "Sky Sports Three",
+	"1322": "Sky Sports Four",
+	"1314": "Sky Sports News",
+	"1306": "Sky Sports F1",
+	"1726": "Eurosport",
+	"1841": "Eurosport Two",
+	"3141": "ESPN",
+	"3221": "ESPN Classic",
+
+	"5601": "Cartoon Network",
+	"5609": "Boomerang",
+	"1846": "Nickelodeon",
+	"1857": "Nickelodeon JR",
+	"1843": "Disney XD",
+	"1881": "Disney JR",
+	"1371": "Cartoon Nito",
+
+	"1806": "National Geographic",
+	"1847": "National Geographic Wild",
+	"1875": "History",
+	"2302": "Eden",
+	"1448": "Crime & Investigation",
+
+	"1404": "Sky News"
+}
+
 ####################################################################################################
 def MetadataObjectForURL(url):
-  return VideoClipObject()
+  
+  channel_id = RE_CHANNEL_ID.search(url)
+  if not channel_id:
+  	return None
+  channel_id = channel_id.group('id')
+
+  now_and_next = NowAndNext(channel_id)
+  description = ""
+  if now_and_next != "":
+    description = "Now: %s\n%s\n\nNext: %s\n%s"
+    description = description % (
+      now_and_next['Now']['Title'], 
+      now_and_next['Now']['Description'], 
+      now_and_next['Next']['Title'], 
+      now_and_next['Next']['Description'])
+
+  return VideoClipObject(
+  	title = CHANNEL_LOOKUP[channel_id],
+  	summary = description,
+  	thumb = CHANNEL_LOGO_URL % channel_id)
 
 ####################################################################################################
 def MediaObjectsForURL(url):
@@ -9,3 +84,41 @@ def MediaObjectsForURL(url):
       parts = [PartObject(key=WebVideoURL(url))]
     )
   ]
+
+####################################################################################################
+
+def NowAndNext(channel_id):
+    epg = JSON.ObjectFromURL(EPG_URL % dict(time = dt.now().strftime('%Y%m%d%H%M'), channels = channel_id))
+
+    # Check to see if we've received anything.
+    if epg == "":
+        return ""
+    
+    # Check to see if we have been given any channel.
+    if epg.has_key('channels') == False:
+        return ""
+    
+    channel_collection = epg['channels']
+
+    # Check to see if we have been given any programs.
+    if channel_collection.has_key('program') == False:
+        return ""
+
+    programs = channel_collection['program']
+
+    # Ensure that we have at least two programs in order to display now and next.
+    if len(programs) < 2:
+        return ""
+
+    # Determine the details of the titles which are "Now and Next"
+    now_title = programs[0]['title']
+    now_desc = ""
+    if programs[0].has_key('shortDesc'):
+        now_desc = programs[0]['shortDesc']
+
+    next_title = programs[1]['title']
+    next_desc = ""
+    if programs[1].has_key('shortDesc'):
+        next_desc = programs[1]['shortDesc']
+    
+    return { "Now" : { "Title": now_title, "Description": now_desc }, "Next" : { "Title": next_title, "Description": next_desc } }
