@@ -28,29 +28,17 @@
             </condition>
             <action>
                 <!-- ...then goto the 'check-for-auth' state -->
-                <goto state="check-for-auth" />
+                <goto state="goto-login" />
             </action>
         </event>
     </state>
 
-    <!-- Check for auth -->
-    <state name="check-for-auth">
+    <!-- Goto login site -->
+    <state name="goto-login">
         <event>
             <condition>
-                <!-- If we don't need to login, goto state 'playing' -->
-                <not>
-                    <condition name="need-to-login" />
-                </not>
-            </condition>
-            <action>
-                <lockPlugin />
-                <goto state="silverlight-loading" />
-            </action>
-        </event>
-        <event>
-            <!-- If we *do* need to login, visit the login url and attempt to submit it -->
-            <condition>
-                <condition name="need-to-login" />
+                <!-- No condition required -->
+                <javascript script="true ? 1 : 0" matches="1" />
             </condition>
             <action>
                 <!-- The state machine will wait until the URL has fully loaded before moving -->
@@ -75,13 +63,13 @@
                 <!-- required post data. -->
                 <run script="username.value='${username}';password.value='${password}';signinform.submit();" />
                 <pause time="2000" />
-                <goto state="check-for-auth-again" />
+                <goto state="check-for-auth" />
             </action>
         </event>
     </state>
 
-    <!-- Check for auth again -->
-    <state name="check-for-auth-again">
+    <!-- Check for auth -->
+    <state name="check-for-auth">
         <event>
             <condition>
                 <!-- If login was successful we should now not need to login and can go to the state 'playing' -->
