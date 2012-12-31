@@ -44,7 +44,7 @@
                 <!-- The state machine will wait until the URL has fully loaded before moving -->
                 <!-- onto the next state. -->
                 <visit url="https://skyid.sky.com/signin/skygo?successUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FreturnLogin.do&amp;cancelUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FreturnLogin.do&amp;nonCustomerContinueUrl=http%3A%2F%2Fgo.sky.com%2Fvod%2Fpage%2FreturnLogin.do"/>
-                <pause time="2000" />
+                <pause time="1000" />
                 <goto state="try-to-login"/>
             </action>
         </event>
@@ -62,7 +62,7 @@
                 <!-- We need to submit the form so that the page's handlers can populate the other -->
                 <!-- required post data. -->
                 <run script="username.value='${username}';password.value='${password}';signinform.submit();" />
-                <pause time="2000" />
+                <pause time="1000" />
                 <goto state="check-for-auth" />
             </action>
         </event>

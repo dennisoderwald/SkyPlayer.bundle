@@ -59,7 +59,7 @@
                 <!-- We need to submit the form so that the page's handlers can populate the other -->
                 <!-- required post data. -->
                 <run script="username.value='${username}';password.value='${password}';signinform.submit();" />
-                <pause time="2000" />
+                <pause time="1000" />
                 <goto state="check-for-auth" />
             </action>
         </event>
@@ -105,7 +105,7 @@
                 <!-- We need to wait a short period of time for the player to start and then -->
                 <!-- send an additional mouse click to the control. This will force the player's -->
                 <!-- controls to autohide -->
-                <pause time="2000" />
+                <pause time="1000" />
                 <click x="275" y="125" />
                 <goto state="playing" />
             </action>
