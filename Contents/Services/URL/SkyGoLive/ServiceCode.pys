@@ -2,7 +2,7 @@ from datetime import datetime as dt
 
 RE_CHANNEL_ID = Regex('epgChannelId=(?P<id>[0-9]+)')
 
-CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/200/200/skychb%s.png'
+CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/1000/1000/skychb%s.png'
 EPG_URL = 'http://www.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?detail=2&dur=1440&time=%(time)s&channels=%(channels)s'
 
 CHANNEL_LOOKUP = {
