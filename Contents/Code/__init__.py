@@ -4,10 +4,6 @@ from datetime import datetime as dt
 
 NAME = L('Title')
 
-ART = 'art-default.jpg'
-ICON = 'icon-default.png'
-ICON_SEARCH = 'icon-search.png'
-
 BASE_URL = 'http://go.sky.com'
 PLAYER_URL = 'http://go.sky.com/vod/page/detachedLiveTv.do?epgChannelId=%s'
 CHANNEL_LOGO_URL = 'http://epgstatic.sky.com/epgdata/1.0/newchanlogos/200/200/skychb%s.png'
@@ -334,26 +330,20 @@ def Start():
     Plugin.AddViewGroup("InfoList", viewMode = "InfoList", mediaType = "items")
 
     # Setup the artwork associated with the plugin
-    ObjectContainer.art = R(ART)
     ObjectContainer.title1 = NAME
     ObjectContainer.view_group = "InfoList"
-
-    DirectoryObject.art = R(ART)
-    DirectoryObject.thumb = R(ICON)
-    VideoClipObject.art = R(ART)
-    VideoClipObject.thumb = R(ICON)
 
     HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4'
 
 # This main function will setup the displayed items. This will depend if the user is currently 
 # logged in.
-@handler('/video/skygo', NAME, art = ART, thumb = ICON)
+@handler('/video/skygo', NAME)
 def MainMenu():
     oc = ObjectContainer(view_group = "List")
 
     oc.add(DirectoryObject(key = Callback(LiveMenu, title = "Channels"), title = "Channels"))
     oc.add(DirectoryObject(key = Callback(OnDemandMainMenu, title = "Anytime+"), title = "Anytime+"))
-    oc.add(SearchDirectoryObject(identifier="com.plexapp.plugins.skyplayer", title = L('Search'), prompt = L('SearchPrompt'), thumb = R(ICON_SEARCH)))
+    oc.add(SearchDirectoryObject(identifier="com.plexapp.plugins.skyplayer", title = L('Search'), prompt = L('SearchPrompt')))
     
     # Preferences
     oc.add(PrefsObject(title = L('Preferences')))
